@@ -5,14 +5,14 @@ public enum DevelopmentExperience {
 	
 	JUNIOR(1), MIDDLE(2), SENIOR(3);
 	
-	private int experience;
+	private int prop;
 	
-	DevelopmentExperience(int experience){
-		this.experience = experience;
+	DevelopmentExperience(int prop){
+		this.prop = prop;
 	}
 	
-	public int getExperience() {
-		return experience;
+	public int getProp() {
+		return this.prop;
 	}
 
 }
