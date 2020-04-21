@@ -39,6 +39,8 @@ public class AtividadeController {
 		this.listNameOfSoftwareActivity.add("Desenvolvendo");
 		this.listNameOfSoftwareActivity.add("Criando testes");
 		this.listNameOfSoftwareActivity.add("Commitando codigo");
+		this.listNameOfSoftwareActivity.add("Corrigindo bugs");
+		this.listNameOfSoftwareActivity.add("Analisando backlog");
 	}
 	
 	private void generateSoftwareActivityLvl() {
@@ -46,6 +48,7 @@ public class AtividadeController {
 		this.listLvlOfSoftwareActivity.add(DevelopmentExperience.MIDDLE);
 		this.listLvlOfSoftwareActivity.add(DevelopmentExperience.SENIOR);
 	}
+	
 	public static int generateNumberRange(int min, int max) {
         Random random = new Random();
         return random.nextInt((max - min) + 1) + min;
