@@ -9,25 +9,24 @@ import java.util.List;
 public class DesenvolvedorController {
 
 	public DesenvolvedorController() {
-		generateListDevs();
+		generateDevsList();
 	}
 	
 	private List<Developer> listOfDevelopers = new ArrayList<Developer>();
 	private List<String> listDevNames = new ArrayList<String>();
 	private List<DeveloperTime> listDevExperience = new ArrayList<DeveloperTime>();
 
-	private List<Developer> generateListDevs() {
+	private List<Developer> generateDevsList() {
 
 		generateDevNames();
 		generateDevExperience();
 		
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < SystemController.numberOfThreads; i++) {
 			Collections.shuffle(listDevExperience);
 			this.listOfDevelopers.add(new Developer(listDevNames.get(i), listDevExperience.get(0)));
 		}
 
 		return listOfDevelopers;
-
 	}
 
 	private void generateDevNames() {
