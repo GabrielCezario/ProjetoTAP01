@@ -1,27 +1,27 @@
 package Model;
 
-import Util.Enum.DevelopmentExperience;
+import Util.Enum.ActivityTime;
 
 public class SoftwareActivity {
 	
 	private String name;
-	private DevelopmentExperience softwareActivityExperience; 
+	private ActivityTime activityExperience; 
 	
 	public SoftwareActivity() {
 		
 	}
 	
-	public SoftwareActivity(String name, DevelopmentExperience softwareActivityExperience) {
+	public SoftwareActivity(String name, ActivityTime activityExperience) {
 		this.name = name;
-		this.softwareActivityExperience = softwareActivityExperience;
+		this.activityExperience = activityExperience;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public DevelopmentExperience getSoftwareActivityExperience() {
-		return softwareActivityExperience;
+	public ActivityTime getSoftwareActivityExperience() {
+		return activityExperience;
 	}
 
 }

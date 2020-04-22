@@ -1,13 +1,12 @@
 package Util.Enum;
 
-
-public enum DevelopmentExperience {
+public enum ActivityTime {
 	
-	JUNIOR(1), MIDDLE(2), SENIOR(3);
+	JUNIOR(1000), MIDDLE(2000), SENIOR(3000);
 	
 	private int prop;
 	
-	DevelopmentExperience(int prop){
+	ActivityTime(int prop){
 		this.prop = prop;
 	}
 	

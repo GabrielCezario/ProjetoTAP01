@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Random;
 
 import Model.SoftwareActivity;
-import Util.Enum.DevelopmentExperience;
+import Util.Enum.ActivityTime;
 
 public class AtividadeController {
 	
 	private List<SoftwareActivity> listOfSoftwareActivity = new ArrayList<SoftwareActivity>();
 	private List<String> listNameOfSoftwareActivity = new ArrayList<String>();
-	private List<DevelopmentExperience> listLvlOfSoftwareActivity = new ArrayList<DevelopmentExperience>();
+	private List<ActivityTime> listLvlOfSoftwareActivity = new ArrayList<ActivityTime>();
 	
 	public List<SoftwareActivity> returnSoftwareActivity() {	
 		
@@ -38,15 +38,14 @@ public class AtividadeController {
 		this.listNameOfSoftwareActivity.add("Analisando requisitos");
 		this.listNameOfSoftwareActivity.add("Desenvolvendo");
 		this.listNameOfSoftwareActivity.add("Criando testes");
-		this.listNameOfSoftwareActivity.add("Commitando codigo");
 		this.listNameOfSoftwareActivity.add("Corrigindo bugs");
 		this.listNameOfSoftwareActivity.add("Analisando backlog");
 	}
 	
 	private void generateSoftwareActivityLvl() {
-		this.listLvlOfSoftwareActivity.add(DevelopmentExperience.JUNIOR);
-		this.listLvlOfSoftwareActivity.add(DevelopmentExperience.MIDDLE);
-		this.listLvlOfSoftwareActivity.add(DevelopmentExperience.SENIOR);
+		this.listLvlOfSoftwareActivity.add(ActivityTime.JUNIOR);
+		this.listLvlOfSoftwareActivity.add(ActivityTime.MIDDLE);
+		this.listLvlOfSoftwareActivity.add(ActivityTime.SENIOR);
 	}
 	
 	public static int generateNumberRange(int min, int max) {

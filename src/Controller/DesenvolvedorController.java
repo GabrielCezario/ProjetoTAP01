@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Developer;
-import Util.Enum.DevelopmentExperience;
+import Util.Enum.DeveloperTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +10,7 @@ public class DesenvolvedorController {
 
 	private List<Developer> listOfDevelopers = new ArrayList<Developer>();
 	private List<String> listDevNames = new ArrayList<String>();
-	private List<DevelopmentExperience> listDevExperience = new ArrayList<DevelopmentExperience>();
+	private List<DeveloperTime> listDevExperience = new ArrayList<DeveloperTime>();
 
 	public List<Developer> generateListDevs() {
 
@@ -42,9 +42,9 @@ public class DesenvolvedorController {
 	}
 
 	public void generateDevExperience() {
-		this.listDevExperience.add(DevelopmentExperience.JUNIOR);
-		this.listDevExperience.add(DevelopmentExperience.MIDDLE);
-		this.listDevExperience.add(DevelopmentExperience.SENIOR);
+		this.listDevExperience.add(DeveloperTime.JUNIOR);
+		this.listDevExperience.add(DeveloperTime.MIDDLE);
+		this.listDevExperience.add(DeveloperTime.SENIOR);
 	}
 
 }
