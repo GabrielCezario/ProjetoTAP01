@@ -8,27 +8,29 @@ import java.util.List;
 
 public class DesenvolvedorController {
 
+	public DesenvolvedorController() {
+		generateListDevs();
+	}
+	
 	private List<Developer> listOfDevelopers = new ArrayList<Developer>();
 	private List<String> listDevNames = new ArrayList<String>();
 	private List<DeveloperTime> listDevExperience = new ArrayList<DeveloperTime>();
 
-	public List<Developer> generateListDevs() {
+	private List<Developer> generateListDevs() {
 
 		generateDevNames();
 		generateDevExperience();
-
+		
 		for (int i = 0; i < 8; i++) {
-			Collections.shuffle(listDevNames);
 			Collections.shuffle(listDevExperience);
-
-			this.listOfDevelopers.add(new Developer(listDevNames.get(0), listDevExperience.get(0)));
+			this.listOfDevelopers.add(new Developer(listDevNames.get(i), listDevExperience.get(0)));
 		}
 
 		return listOfDevelopers;
 
 	}
 
-	public void generateDevNames() {
+	private void generateDevNames() {
 		this.listDevNames.add("Alan Turing");
 		this.listDevNames.add("Elliot Alderson");
 		this.listDevNames.add("Ada Lovelace");
@@ -41,10 +43,14 @@ public class DesenvolvedorController {
 
 	}
 
-	public void generateDevExperience() {
+	private void generateDevExperience() {
 		this.listDevExperience.add(DeveloperTime.JUNIOR);
 		this.listDevExperience.add(DeveloperTime.MIDDLE);
 		this.listDevExperience.add(DeveloperTime.SENIOR);
+	}
+	
+	public List<Developer> getDeveloperList() {
+		return this.listOfDevelopers;
 	}
 
 }
