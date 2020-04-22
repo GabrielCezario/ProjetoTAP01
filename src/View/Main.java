@@ -15,8 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
-public class Main {
+import Controller.AtividadeController;
+import Controller.DesenvolvedorController;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
+public class Main {
+	private DesenvolvedorController dc;
+	private AtividadeController ac;
 	private JFrame frame;
 
 	/**
@@ -39,681 +45,711 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
+		initDevs();
+		initActivity();
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+
+	private void initDevs() {
+		dc = new DesenvolvedorController();
+	}
+
+	private void initActivity() {
+		ac = new AtividadeController();
+	}
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1280, 668);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(null);
-		
+
 		Panel panel_2 = new Panel();
 		panel_2.setBackground(new Color(255, 255, 255));
 		panel_2.setBounds(225, 0, 1049, 642);
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
-		
+
+		JProgressBar progressProject = new JProgressBar();
+		progressProject.setBackground(new Color(148, 0, 211));
+		progressProject.setBounds(10, 599, 1029, 32);
+		panel_2.add(progressProject);
+
 		JPanel Dev01 = new JPanel();
 		Dev01.setBounds(10, 337, 250, 66);
 		panel_2.add(Dev01);
 		Dev01.setLayout(null);
-		
-		JLabel lblDev01 = new JLabel("New label");
+
+		JLabel lblDev01 = new JLabel();
+		lblDev01.setText(dc.getDeveloperList().get(0).getName());
 		lblDev01.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev01.setBounds(10, 11, 207, 19);
+		lblDev01.setBounds(10, 11, 207, 14);
 		Dev01.add(lblDev01);
-		
-		JLabel lblActivity01 = new JLabel("New label");
+
+		JLabel lblActivity01 = new JLabel();
+		lblActivity01.setText("New label");
 		lblActivity01.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01.setBounds(10, 41, 207, 14);
 		Dev01.add(lblActivity01);
-		
-		JProgressBar progressBarDev01 = new JProgressBar();
-		progressBarDev01.setBounds(10, 414, 250, 24);
-		panel_2.add(progressBarDev01);
-		
-		JPanel Dev02 = new JPanel();
-		Dev02.setLayout(null);
-		Dev02.setBounds(270, 337, 250, 66);
-		panel_2.add(Dev02);
-		
-		JLabel lblDev02 = new JLabel("New label");
-		lblDev02.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev02.setBounds(10, 11, 207, 19);
-		Dev02.add(lblDev02);
-		
-		JLabel lblActivity02 = new JLabel("New label");
-		lblActivity02.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblActivity02.setBounds(10, 41, 207, 14);
-		Dev02.add(lblActivity02);
-		
-		JProgressBar progressBarDev02 = new JProgressBar();
-		progressBarDev02.setBounds(270, 414, 250, 24);
-		panel_2.add(progressBarDev02);
-		
-		JPanel Dev03 = new JPanel();
-		Dev03.setLayout(null);
-		Dev03.setBounds(530, 337, 250, 66);
-		panel_2.add(Dev03);
-		
-		JLabel lblDev03 = new JLabel("New label");
-		lblDev03.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev03.setBounds(10, 11, 207, 19);
-		Dev03.add(lblDev03);
-		
-		JLabel lblActivity03 = new JLabel("New label");
-		lblActivity03.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblActivity03.setBounds(10, 41, 207, 14);
-		Dev03.add(lblActivity03);
-		
-		JProgressBar progressBarDev03 = new JProgressBar();
-		progressBarDev03.setBounds(530, 414, 250, 24);
-		panel_2.add(progressBarDev03);
-		
-		JPanel Dev04 = new JPanel();
-		Dev04.setLayout(null);
-		Dev04.setBounds(789, 337, 253, 66);
-		panel_2.add(Dev04);
-		
-		JLabel lblDev04 = new JLabel("New label");
-		lblDev04.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev04.setBounds(10, 11, 207, 19);
-		Dev04.add(lblDev04);
-		
-		JLabel lblActivity04 = new JLabel("New label");
-		lblActivity04.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblActivity04.setBounds(10, 41, 207, 14);
-		Dev04.add(lblActivity04);
-		
-		JProgressBar progressBarDev04 = new JProgressBar();
-		progressBarDev04.setBounds(789, 414, 253, 24);
-		panel_2.add(progressBarDev04);
-		
-		JPanel Dev05 = new JPanel();
-		Dev05.setLayout(null);
-		Dev05.setBounds(10, 467, 250, 66);
-		panel_2.add(Dev05);
-		
-		JLabel lblDev05 = new JLabel("New label");
-		lblDev05.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev05.setBounds(10, 11, 207, 19);
-		Dev05.add(lblDev05);
-		
-		JLabel lblActivity05 = new JLabel("New label");
-		lblActivity05.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblActivity05.setBounds(10, 41, 207, 14);
-		Dev05.add(lblActivity05);
-		
-		JProgressBar progressBarDev05 = new JProgressBar();
-		progressBarDev05.setBounds(10, 544, 250, 24);
-		panel_2.add(progressBarDev05);
-		
-		JPanel Dev06 = new JPanel();
-		Dev06.setLayout(null);
-		Dev06.setBounds(270, 467, 250, 66);
-		panel_2.add(Dev06);
-		
-		JLabel lblDev06 = new JLabel("New label");
-		lblDev06.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev06.setBounds(10, 11, 207, 19);
-		Dev06.add(lblDev06);
-		
-		JLabel lblActivity06 = new JLabel("New label");
-		lblActivity06.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblActivity06.setBounds(10, 41, 207, 14);
-		Dev06.add(lblActivity06);
-		
-		JProgressBar progressBarDev06 = new JProgressBar();
-		progressBarDev06.setBounds(270, 544, 250, 24);
-		panel_2.add(progressBarDev06);
-		
-		JPanel Dev07 = new JPanel();
-		Dev07.setLayout(null);
-		Dev07.setBounds(530, 467, 250, 66);
-		panel_2.add(Dev07);
-		
-		JLabel lblDev07 = new JLabel("New label");
-		lblDev07.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev07.setBounds(10, 11, 207, 19);
-		Dev07.add(lblDev07);
-		
-		JLabel lblActivity07 = new JLabel("New label");
-		lblActivity07.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblActivity07.setBounds(10, 41, 207, 14);
-		Dev07.add(lblActivity07);
-		
-		JProgressBar progressBarDev07 = new JProgressBar();
-		progressBarDev07.setBounds(530, 544, 250, 24);
-		panel_2.add(progressBarDev07);
-		
-		JPanel Dev08 = new JPanel();
-		Dev08.setLayout(null);
-		Dev08.setBounds(789, 467, 253, 66);
-		panel_2.add(Dev08);
-		
-		JLabel lblDev08 = new JLabel("New label");
-		lblDev08.setFont(new Font("Arial Black", Font.BOLD, 12));
-		lblDev08.setBounds(10, 11, 207, 19);
-		Dev08.add(lblDev08);
-		
-		JLabel lblActivity08 = new JLabel("New label");
-		lblActivity08.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblActivity08.setBounds(10, 41, 207, 14);
-		Dev08.add(lblActivity08);
-		
-		JProgressBar progressBarDev08 = new JProgressBar();
-		progressBarDev08.setBounds(789, 544, 253, 24);
-		panel_2.add(progressBarDev08);
-		
-		Panel panel_3 = new Panel();
-		panel_3.setBackground(new Color(221, 160, 221));
-		panel_3.setBounds(10, 10, 340, 299);
-		panel_2.add(panel_3);
-		panel_3.setLayout(null);
-		
-		JLabel lblToDo = new JLabel("TO DO");
-		lblToDo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblToDo.setFont(new Font("Arial Black", Font.BOLD, 17));
-		lblToDo.setBounds(121, 11, 83, 17);
-		panel_3.add(lblToDo);
-		
-		JLabel lblToDoActivity01 = new JLabel("NAME");
-		lblToDoActivity01.setForeground(new Color(255, 255, 255));
-		lblToDoActivity01.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity01.setBackground(new Color(255, 255, 255));
-		lblToDoActivity01.setBounds(26, 39, 50, 50);
-		panel_3.add(lblToDoActivity01);
-		
-		JLabel lblToDoActivity02 = new JLabel("NAME");
-		lblToDoActivity02.setForeground(Color.WHITE);
-		lblToDoActivity02.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity02.setBackground(Color.WHITE);
-		lblToDoActivity02.setBounds(86, 39, 50, 50);
-		panel_3.add(lblToDoActivity02);
-		
-		JLabel lblToDoActivity03 = new JLabel("NAME");
-		lblToDoActivity03.setForeground(Color.WHITE);
-		lblToDoActivity03.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity03.setBackground(Color.WHITE);
-		lblToDoActivity03.setBounds(146, 39, 50, 50);
-		panel_3.add(lblToDoActivity03);
-		
-		JLabel lblToDoActivity04 = new JLabel("NAME");
-		lblToDoActivity04.setForeground(Color.WHITE);
-		lblToDoActivity04.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity04.setBackground(Color.WHITE);
-		lblToDoActivity04.setBounds(206, 39, 50, 50);
-		panel_3.add(lblToDoActivity04);
-		
-		JLabel lblToDoActivity05 = new JLabel("NAME");
-		lblToDoActivity05.setForeground(Color.WHITE);
-		lblToDoActivity05.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity05.setBackground(Color.WHITE);
-		lblToDoActivity05.setBounds(266, 39, 50, 50);
-		panel_3.add(lblToDoActivity05);
-		
-		JLabel lblToDoActivity10 = new JLabel("NAME");
-		lblToDoActivity10.setForeground(Color.WHITE);
-		lblToDoActivity10.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity10.setBackground(Color.WHITE);
-		lblToDoActivity10.setBounds(266, 100, 50, 50);
-		panel_3.add(lblToDoActivity10);
-		
-		JLabel lblToDoActivity09 = new JLabel("NAME");
-		lblToDoActivity09.setForeground(Color.WHITE);
-		lblToDoActivity09.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity09.setBackground(Color.WHITE);
-		lblToDoActivity09.setBounds(206, 100, 50, 50);
-		panel_3.add(lblToDoActivity09);
-		
-		JLabel lblToDoActivity08 = new JLabel("NAME");
-		lblToDoActivity08.setForeground(Color.WHITE);
-		lblToDoActivity08.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity08.setBackground(Color.WHITE);
-		lblToDoActivity08.setBounds(146, 100, 50, 50);
-		panel_3.add(lblToDoActivity08);
-		
-		JLabel lblToDoActivity07 = new JLabel("NAME");
-		lblToDoActivity07.setForeground(Color.WHITE);
-		lblToDoActivity07.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity07.setBackground(Color.WHITE);
-		lblToDoActivity07.setBounds(86, 100, 50, 50);
-		panel_3.add(lblToDoActivity07);
-		
-		JLabel lblToDoActivity06 = new JLabel("NAME");
-		lblToDoActivity06.setForeground(Color.WHITE);
-		lblToDoActivity06.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity06.setBackground(Color.WHITE);
-		lblToDoActivity06.setBounds(26, 100, 50, 50);
-		panel_3.add(lblToDoActivity06);
-		
-		JLabel lblToDoActivity15 = new JLabel("NAME");
-		lblToDoActivity15.setForeground(Color.WHITE);
-		lblToDoActivity15.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity15.setBackground(Color.WHITE);
-		lblToDoActivity15.setBounds(266, 161, 50, 50);
-		panel_3.add(lblToDoActivity15);
-		
-		JLabel lblToDoActivity14 = new JLabel("NAME");
-		lblToDoActivity14.setForeground(Color.WHITE);
-		lblToDoActivity14.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity14.setBackground(Color.WHITE);
-		lblToDoActivity14.setBounds(206, 161, 50, 50);
-		panel_3.add(lblToDoActivity14);
-		
-		JLabel lblToDoActivity13 = new JLabel("NAME");
-		lblToDoActivity13.setForeground(Color.WHITE);
-		lblToDoActivity13.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity13.setBackground(Color.WHITE);
-		lblToDoActivity13.setBounds(146, 161, 50, 50);
-		panel_3.add(lblToDoActivity13);
-		
-		JLabel lblToDoActivity12 = new JLabel("NAME");
-		lblToDoActivity12.setForeground(Color.WHITE);
-		lblToDoActivity12.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity12.setBackground(Color.WHITE);
-		lblToDoActivity12.setBounds(86, 161, 50, 50);
-		panel_3.add(lblToDoActivity12);
-		
-		JLabel lblToDoActivity11 = new JLabel("NAME");
-		lblToDoActivity11.setForeground(Color.WHITE);
-		lblToDoActivity11.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity11.setBackground(Color.WHITE);
-		lblToDoActivity11.setBounds(26, 161, 50, 50);
-		panel_3.add(lblToDoActivity11);
-		
-		JLabel lblToDoActivity20 = new JLabel("NAME");
-		lblToDoActivity20.setForeground(Color.WHITE);
-		lblToDoActivity20.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity20.setBackground(Color.WHITE);
-		lblToDoActivity20.setBounds(266, 222, 50, 50);
-		panel_3.add(lblToDoActivity20);
-		
-		JLabel lblToDoActivity19 = new JLabel("NAME");
-		lblToDoActivity19.setForeground(Color.WHITE);
-		lblToDoActivity19.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity19.setBackground(Color.WHITE);
-		lblToDoActivity19.setBounds(206, 222, 50, 50);
-		panel_3.add(lblToDoActivity19);
-		
-		JLabel lblToDoActivity18 = new JLabel("NAME");
-		lblToDoActivity18.setForeground(Color.WHITE);
-		lblToDoActivity18.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity18.setBackground(Color.WHITE);
-		lblToDoActivity18.setBounds(146, 222, 50, 50);
-		panel_3.add(lblToDoActivity18);
-		
-		JLabel lblToDoActivity17 = new JLabel("NAME");
-		lblToDoActivity17.setForeground(Color.WHITE);
-		lblToDoActivity17.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity17.setBackground(Color.WHITE);
-		lblToDoActivity17.setBounds(86, 222, 50, 50);
-		panel_3.add(lblToDoActivity17);
-		
-		JLabel lblToDoActivity16 = new JLabel("NAME");
-		lblToDoActivity16.setForeground(Color.WHITE);
-		lblToDoActivity16.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblToDoActivity16.setBackground(Color.WHITE);
-		lblToDoActivity16.setBounds(26, 222, 50, 50);
-		panel_3.add(lblToDoActivity16);
-		
-		Panel panel_3_1 = new Panel();
-		panel_3_1.setBackground(new Color(216, 191, 216));
-		panel_3_1.setLayout(null);
-		panel_3_1.setBounds(356, 10, 340, 299);
-		panel_2.add(panel_3_1);
-		
-		JLabel lblDoing = new JLabel("DOING");
-		lblDoing.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDoing.setFont(new Font("Arial Black", Font.BOLD, 17));
-		lblDoing.setBounds(124, 11, 76, 25);
-		panel_3_1.add(lblDoing);
-		
-		JLabel lblDoingActivity01 = new JLabel("NAME");
-		lblDoingActivity01.setForeground(Color.WHITE);
-		lblDoingActivity01.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity01.setBackground(Color.WHITE);
-		lblDoingActivity01.setBounds(27, 39, 50, 50);
-		panel_3_1.add(lblDoingActivity01);
-		
-		JLabel lblDoingActivity02 = new JLabel("NAME");
-		lblDoingActivity02.setForeground(Color.WHITE);
-		lblDoingActivity02.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity02.setBackground(Color.WHITE);
-		lblDoingActivity02.setBounds(87, 39, 50, 50);
-		panel_3_1.add(lblDoingActivity02);
-		
-		JLabel lblDoingActivity03 = new JLabel("NAME");
-		lblDoingActivity03.setForeground(Color.WHITE);
-		lblDoingActivity03.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity03.setBackground(Color.WHITE);
-		lblDoingActivity03.setBounds(147, 39, 50, 50);
-		panel_3_1.add(lblDoingActivity03);
-		
-		JLabel lblDoingActivity04 = new JLabel("NAME");
-		lblDoingActivity04.setForeground(Color.WHITE);
-		lblDoingActivity04.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity04.setBackground(Color.WHITE);
-		lblDoingActivity04.setBounds(207, 39, 50, 50);
-		panel_3_1.add(lblDoingActivity04);
-		
-		JLabel lblDoingActivity05 = new JLabel("NAME");
-		lblDoingActivity05.setForeground(Color.WHITE);
-		lblDoingActivity05.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity05.setBackground(Color.WHITE);
-		lblDoingActivity05.setBounds(267, 39, 50, 50);
-		panel_3_1.add(lblDoingActivity05);
-		
-		JLabel lblDoingActivity10 = new JLabel("NAME");
-		lblDoingActivity10.setForeground(Color.WHITE);
-		lblDoingActivity10.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity10.setBackground(Color.WHITE);
-		lblDoingActivity10.setBounds(267, 100, 50, 50);
-		panel_3_1.add(lblDoingActivity10);
-		
-		JLabel lblDoingActivity09 = new JLabel("NAME");
-		lblDoingActivity09.setForeground(Color.WHITE);
-		lblDoingActivity09.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity09.setBackground(Color.WHITE);
-		lblDoingActivity09.setBounds(207, 100, 50, 50);
-		panel_3_1.add(lblDoingActivity09);
-		
-		JLabel lblDoingActivity08 = new JLabel("NAME");
-		lblDoingActivity08.setForeground(Color.WHITE);
-		lblDoingActivity08.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity08.setBackground(Color.WHITE);
-		lblDoingActivity08.setBounds(147, 100, 50, 50);
-		panel_3_1.add(lblDoingActivity08);
-		
-		JLabel lblDoingActivity07 = new JLabel("NAME");
-		lblDoingActivity07.setForeground(Color.WHITE);
-		lblDoingActivity07.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity07.setBackground(Color.WHITE);
-		lblDoingActivity07.setBounds(87, 100, 50, 50);
-		panel_3_1.add(lblDoingActivity07);
-		
-		JLabel lblDoingActivity06 = new JLabel("NAME");
-		lblDoingActivity06.setForeground(Color.WHITE);
-		lblDoingActivity06.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity06.setBackground(Color.WHITE);
-		lblDoingActivity06.setBounds(27, 100, 50, 50);
-		panel_3_1.add(lblDoingActivity06);
-		
-		JLabel lblDoingActivity11 = new JLabel("NAME");
-		lblDoingActivity11.setForeground(Color.WHITE);
-		lblDoingActivity11.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity11.setBackground(Color.WHITE);
-		lblDoingActivity11.setBounds(27, 161, 50, 50);
-		panel_3_1.add(lblDoingActivity11);
-		
-		JLabel lblDoingActivity12 = new JLabel("NAME");
-		lblDoingActivity12.setForeground(Color.WHITE);
-		lblDoingActivity12.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity12.setBackground(Color.WHITE);
-		lblDoingActivity12.setBounds(87, 161, 50, 50);
-		panel_3_1.add(lblDoingActivity12);
-		
-		JLabel lblDoingActivity13 = new JLabel("NAME");
-		lblDoingActivity13.setForeground(Color.WHITE);
-		lblDoingActivity13.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity13.setBackground(Color.WHITE);
-		lblDoingActivity13.setBounds(147, 161, 50, 50);
-		panel_3_1.add(lblDoingActivity13);
-		
-		JLabel lblDoingActivity14 = new JLabel("NAME");
-		lblDoingActivity14.setForeground(Color.WHITE);
-		lblDoingActivity14.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity14.setBackground(Color.WHITE);
-		lblDoingActivity14.setBounds(207, 161, 50, 50);
-		panel_3_1.add(lblDoingActivity14);
-		
-		JLabel lblDoingActivity15 = new JLabel("NAME");
-		lblDoingActivity15.setForeground(Color.WHITE);
-		lblDoingActivity15.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity15.setBackground(Color.WHITE);
-		lblDoingActivity15.setBounds(267, 161, 50, 50);
-		panel_3_1.add(lblDoingActivity15);
-		
-		JLabel lblDoingActivity20 = new JLabel("NAME");
-		lblDoingActivity20.setForeground(Color.WHITE);
-		lblDoingActivity20.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity20.setBackground(Color.WHITE);
-		lblDoingActivity20.setBounds(267, 222, 50, 50);
-		panel_3_1.add(lblDoingActivity20);
-		
-		JLabel lblDoingActivity19 = new JLabel("NAME");
-		lblDoingActivity19.setForeground(Color.WHITE);
-		lblDoingActivity19.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity19.setBackground(Color.WHITE);
-		lblDoingActivity19.setBounds(207, 222, 50, 50);
-		panel_3_1.add(lblDoingActivity19);
-		
-		JLabel lblDoingActivity18 = new JLabel("NAME");
-		lblDoingActivity18.setForeground(Color.WHITE);
-		lblDoingActivity18.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity18.setBackground(Color.WHITE);
-		lblDoingActivity18.setBounds(147, 222, 50, 50);
-		panel_3_1.add(lblDoingActivity18);
-		
-		JLabel lblDoingActivity17 = new JLabel("NAME");
-		lblDoingActivity17.setForeground(Color.WHITE);
-		lblDoingActivity17.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity17.setBackground(Color.WHITE);
-		lblDoingActivity17.setBounds(87, 222, 50, 50);
-		panel_3_1.add(lblDoingActivity17);
-		
-		JLabel lblDoingActivity16 = new JLabel("NAME");
-		lblDoingActivity16.setForeground(Color.WHITE);
-		lblDoingActivity16.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoingActivity16.setBackground(Color.WHITE);
-		lblDoingActivity16.setBounds(27, 222, 50, 50);
-		panel_3_1.add(lblDoingActivity16);
-		
-		Panel panel_3_2 = new Panel();
-		panel_3_2.setBackground(new Color(221, 160, 221));
-		panel_3_2.setLayout(null);
-		panel_3_2.setBounds(702, 10, 340, 299);
-		panel_2.add(panel_3_2);
-		
-		JLabel lblDone = new JLabel("DONE");
-		lblDone.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDone.setFont(new Font("Arial Black", Font.BOLD, 17));
-		lblDone.setBounds(134, 11, 76, 19);
-		panel_3_2.add(lblDone);
-		
-		JLabel lblDoneActivity01 = new JLabel("NAME");
-		lblDoneActivity01.setForeground(Color.WHITE);
-		lblDoneActivity01.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity01.setBackground(Color.WHITE);
-		lblDoneActivity01.setBounds(28, 38, 50, 50);
-		panel_3_2.add(lblDoneActivity01);
-		
-		JLabel lblDoneActivity02 = new JLabel("NAME");
-		lblDoneActivity02.setForeground(Color.WHITE);
-		lblDoneActivity02.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity02.setBackground(Color.WHITE);
-		lblDoneActivity02.setBounds(88, 38, 50, 50);
-		panel_3_2.add(lblDoneActivity02);
-		
-		JLabel lblDoneActivity03 = new JLabel("NAME");
-		lblDoneActivity03.setForeground(Color.WHITE);
-		lblDoneActivity03.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity03.setBackground(Color.WHITE);
-		lblDoneActivity03.setBounds(148, 38, 50, 50);
-		panel_3_2.add(lblDoneActivity03);
-		
-		JLabel lblDoneActivity04 = new JLabel("NAME");
-		lblDoneActivity04.setForeground(Color.WHITE);
-		lblDoneActivity04.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity04.setBackground(Color.WHITE);
-		lblDoneActivity04.setBounds(208, 38, 50, 50);
-		panel_3_2.add(lblDoneActivity04);
-		
-		JLabel lblDoneActivity05 = new JLabel("NAME");
-		lblDoneActivity05.setForeground(Color.WHITE);
-		lblDoneActivity05.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity05.setBackground(Color.WHITE);
-		lblDoneActivity05.setBounds(268, 38, 50, 50);
-		panel_3_2.add(lblDoneActivity05);
-		
-		JLabel lblDoneActivity10 = new JLabel("NAME");
-		lblDoneActivity10.setForeground(Color.WHITE);
-		lblDoneActivity10.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity10.setBackground(Color.WHITE);
-		lblDoneActivity10.setBounds(268, 99, 50, 50);
-		panel_3_2.add(lblDoneActivity10);
-		
-		JLabel lblDoneActivity09 = new JLabel("NAME");
-		lblDoneActivity09.setForeground(Color.WHITE);
-		lblDoneActivity09.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity09.setBackground(Color.WHITE);
-		lblDoneActivity09.setBounds(208, 99, 50, 50);
-		panel_3_2.add(lblDoneActivity09);
-		
-		JLabel lblDoneActivity08 = new JLabel("NAME");
-		lblDoneActivity08.setForeground(Color.WHITE);
-		lblDoneActivity08.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity08.setBackground(Color.WHITE);
-		lblDoneActivity08.setBounds(148, 99, 50, 50);
-		panel_3_2.add(lblDoneActivity08);
-		
-		JLabel lblDoneActivity07 = new JLabel("NAME");
-		lblDoneActivity07.setForeground(Color.WHITE);
-		lblDoneActivity07.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity07.setBackground(Color.WHITE);
-		lblDoneActivity07.setBounds(88, 99, 50, 50);
-		panel_3_2.add(lblDoneActivity07);
-		
-		JLabel lblDoneActivity06 = new JLabel("NAME");
-		lblDoneActivity06.setForeground(Color.WHITE);
-		lblDoneActivity06.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity06.setBackground(Color.WHITE);
-		lblDoneActivity06.setBounds(28, 99, 50, 50);
-		panel_3_2.add(lblDoneActivity06);
-		
-		JLabel lblDoneActivity11 = new JLabel("NAME");
-		lblDoneActivity11.setForeground(Color.WHITE);
-		lblDoneActivity11.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity11.setBackground(Color.WHITE);
-		lblDoneActivity11.setBounds(28, 160, 50, 50);
-		panel_3_2.add(lblDoneActivity11);
-		
-		JLabel lblDoneActivity12 = new JLabel("NAME");
-		lblDoneActivity12.setForeground(Color.WHITE);
-		lblDoneActivity12.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity12.setBackground(Color.WHITE);
-		lblDoneActivity12.setBounds(88, 160, 50, 50);
-		panel_3_2.add(lblDoneActivity12);
-		
-		JLabel lblDoneActivity13 = new JLabel("NAME");
-		lblDoneActivity13.setForeground(Color.WHITE);
-		lblDoneActivity13.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity13.setBackground(Color.WHITE);
-		lblDoneActivity13.setBounds(148, 160, 50, 50);
-		panel_3_2.add(lblDoneActivity13);
-		
-		JLabel lblDoneActivity14 = new JLabel("NAME");
-		lblDoneActivity14.setForeground(Color.WHITE);
-		lblDoneActivity14.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity14.setBackground(Color.WHITE);
-		lblDoneActivity14.setBounds(208, 160, 50, 50);
-		panel_3_2.add(lblDoneActivity14);
-		
-		JLabel lblDoneActivity15 = new JLabel("NAME");
-		lblDoneActivity15.setForeground(Color.WHITE);
-		lblDoneActivity15.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity15.setBackground(Color.WHITE);
-		lblDoneActivity15.setBounds(268, 160, 50, 50);
-		panel_3_2.add(lblDoneActivity15);
-		
-		JLabel lblDoneActivity20 = new JLabel("NAME");
-		lblDoneActivity20.setForeground(Color.WHITE);
-		lblDoneActivity20.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity20.setBackground(Color.WHITE);
-		lblDoneActivity20.setBounds(268, 221, 50, 50);
-		panel_3_2.add(lblDoneActivity20);
-		
-		JLabel lblDoneActivity19 = new JLabel("NAME");
-		lblDoneActivity19.setForeground(Color.WHITE);
-		lblDoneActivity19.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity19.setBackground(Color.WHITE);
-		lblDoneActivity19.setBounds(208, 221, 50, 50);
-		panel_3_2.add(lblDoneActivity19);
-		
-		JLabel lblDoneActivity18 = new JLabel("NAME");
-		lblDoneActivity18.setForeground(Color.WHITE);
-		lblDoneActivity18.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity18.setBackground(Color.WHITE);
-		lblDoneActivity18.setBounds(148, 221, 50, 50);
-		panel_3_2.add(lblDoneActivity18);
-		
-		JLabel lblDoneActivity17 = new JLabel("NAME");
-		lblDoneActivity17.setForeground(Color.WHITE);
-		lblDoneActivity17.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity17.setBackground(Color.WHITE);
-		lblDoneActivity17.setBounds(88, 221, 50, 50);
-		panel_3_2.add(lblDoneActivity17);
-		
-		JLabel lblDoneActivity16 = new JLabel("NAME");
-		lblDoneActivity16.setForeground(Color.WHITE);
-		lblDoneActivity16.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDoneActivity16.setBackground(Color.WHITE);
-		lblDoneActivity16.setBounds(28, 221, 50, 50);
-		panel_3_2.add(lblDoneActivity16);
-		
-		JProgressBar progressProject = new JProgressBar();
-		progressProject.setBackground(new Color(148, 0, 211));
-		progressProject.setBounds(10, 599, 1032, 32);
-		panel_2.add(progressProject);
-		
-		Panel panel_1 = new Panel();
-		panel_1.setBackground(new Color(128, 0, 128));
-		panel_1.setBounds(0, 0, 230, 78);
-		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
-		
-		JLabel lblLogoProjeto = new JLabel("LOGO DO PROJETO");
-		lblLogoProjeto.setFont(new Font("Arial Black", Font.BOLD, 15));
-		lblLogoProjeto.setBounds(10, 11, 210, 56);
-		panel_1.add(lblLogoProjeto);
-		
-		Panel panel = new Panel();
-		panel.setBackground(new Color(51, 51, 51));
-		panel.setForeground(Color.WHITE);
-		panel.setBounds(0, 0, 230, 641);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
-		
+
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(10, 414, 250, 24);
+		panel_2.add(progressBar);
+
+		JPanel Dev01_1 = new JPanel();
+		Dev01_1.setLayout(null);
+		Dev01_1.setBounds(270, 337, 250, 66);
+		panel_2.add(Dev01_1);
+
+		JLabel lblDev01_1 = new JLabel(dc.getDeveloperList().get(1).getName());
+		lblDev01_1.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblDev01_1.setBounds(10, 11, 207, 14);
+		Dev01_1.add(lblDev01_1);
+
+		JLabel lblActivity01_1 = new JLabel();
+		lblActivity01_1.setText("New Label");
+		lblActivity01_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblActivity01_1.setBounds(10, 41, 207, 14);
+		Dev01_1.add(lblActivity01_1);
+
+		JProgressBar progressBar_1 = new JProgressBar();
+		progressBar_1.setBounds(270, 414, 250, 24);
+		panel_2.add(progressBar_1);
+
+		JPanel Dev01_2 = new JPanel();
+		Dev01_2.setLayout(null);
+		Dev01_2.setBounds(530, 337, 250, 66);
+		panel_2.add(Dev01_2);
+
+		JLabel lblDev01_2 = new JLabel(dc.getDeveloperList().get(2).getName());
+		lblDev01_2.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblDev01_2.setBounds(10, 11, 207, 14);
+		Dev01_2.add(lblDev01_2);
+
+		JLabel lblActivity01_2 = new JLabel("New label");
+		lblActivity01_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblActivity01_2.setBounds(10, 41, 207, 14);
+		Dev01_2.add(lblActivity01_2);
+
+		JProgressBar progressBar_2 = new JProgressBar();
+		progressBar_2.setBounds(530, 414, 250, 24);
+		panel_2.add(progressBar_2);
+
+		JPanel Dev01_3 = new JPanel();
+		Dev01_3.setLayout(null);
+		Dev01_3.setBounds(789, 337, 250, 66);
+		panel_2.add(Dev01_3);
+
+		JLabel lblDev01_3 = new JLabel(dc.getDeveloperList().get(3).getName());
+		lblDev01_3.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblDev01_3.setBounds(10, 11, 207, 14);
+		Dev01_3.add(lblDev01_3);
+
+		JLabel lblActivity01_3 = new JLabel("New label");
+		lblActivity01_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblActivity01_3.setBounds(10, 41, 207, 14);
+		Dev01_3.add(lblActivity01_3);
+
+		JProgressBar progressBar_3 = new JProgressBar();
+		progressBar_3.setBounds(789, 414, 250, 24);
+		panel_2.add(progressBar_3);
+
+		JPanel Dev01_3_1 = new JPanel();
+		Dev01_3_1.setLayout(null);
+		Dev01_3_1.setBounds(10, 467, 250, 66);
+		panel_2.add(Dev01_3_1);
+
+		JLabel lblDev01_3_1 = new JLabel(dc.getDeveloperList().get(4).getName());
+		lblDev01_3_1.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblDev01_3_1.setBounds(10, 11, 207, 14);
+		Dev01_3_1.add(lblDev01_3_1);
+
+		JLabel lblActivity01_3_1 = new JLabel("New label");
+		lblActivity01_3_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblActivity01_3_1.setBounds(10, 41, 207, 14);
+		Dev01_3_1.add(lblActivity01_3_1);
+
+		JProgressBar progressBar_3_1 = new JProgressBar();
+		progressBar_3_1.setBounds(10, 544, 250, 24);
+		panel_2.add(progressBar_3_1);
+
+		JPanel Dev01_3_2 = new JPanel();
+		Dev01_3_2.setLayout(null);
+		Dev01_3_2.setBounds(270, 467, 250, 66);
+		panel_2.add(Dev01_3_2);
+
+		JLabel lblDev01_3_2 = new JLabel(dc.getDeveloperList().get(5).getName());
+		lblDev01_3_2.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblDev01_3_2.setBounds(10, 11, 207, 14);
+		Dev01_3_2.add(lblDev01_3_2);
+
+		JLabel lblActivity01_3_2 = new JLabel("New label");
+		lblActivity01_3_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblActivity01_3_2.setBounds(10, 41, 207, 14);
+		Dev01_3_2.add(lblActivity01_3_2);
+
+		JProgressBar progressBar_3_2 = new JProgressBar();
+		progressBar_3_2.setBounds(270, 544, 250, 24);
+		panel_2.add(progressBar_3_2);
+
+		JPanel Dev01_3_3 = new JPanel();
+		Dev01_3_3.setLayout(null);
+		Dev01_3_3.setBounds(530, 467, 250, 66);
+		panel_2.add(Dev01_3_3);
+
+		JLabel lblDev01_3_3 = new JLabel(dc.getDeveloperList().get(6).getName());
+		lblDev01_3_3.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblDev01_3_3.setBounds(10, 11, 207, 14);
+		Dev01_3_3.add(lblDev01_3_3);
+
+		JLabel lblActivity01_3_3 = new JLabel("New label");
+		lblActivity01_3_3.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblActivity01_3_3.setBounds(10, 41, 207, 14);
+		Dev01_3_3.add(lblActivity01_3_3);
+
+		JProgressBar progressBar_3_3 = new JProgressBar();
+		progressBar_3_3.setBounds(530, 544, 250, 24);
+		panel_2.add(progressBar_3_3);
+
+		JPanel Dev01_3_4 = new JPanel();
+		Dev01_3_4.setLayout(null);
+		Dev01_3_4.setBounds(789, 467, 250, 66);
+		panel_2.add(Dev01_3_4);
+
+		JLabel lblDev01_3_4 = new JLabel(dc.getDeveloperList().get(7).getName());
+		lblDev01_3_4.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblDev01_3_4.setBounds(10, 11, 207, 14);
+		Dev01_3_4.add(lblDev01_3_4);
+
+		JLabel lblActivity01_3_4 = new JLabel("New label");
+		lblActivity01_3_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblActivity01_3_4.setBounds(10, 41, 207, 14);
+		Dev01_3_4.add(lblActivity01_3_4);
+
+		JProgressBar progressBar_3_4 = new JProgressBar();
+		progressBar_3_4.setBounds(789, 544, 250, 24);
+		panel_2.add(progressBar_3_4);
+
+		Panel panel_todo = new Panel();
+		panel_todo.setBackground(new Color(221, 160, 221));
+		panel_todo.setBounds(10, 10, 340, 299);
+		panel_2.add(panel_todo);
+		panel_todo.setLayout(null);
+
+		JLabel todoLabel_1 = new JLabel("TO DO");
+		todoLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		todoLabel_1.setFont(new Font("Arial Black", Font.BOLD, 17));
+		todoLabel_1.setBounds(121, 11, 83, 17);
+		panel_todo.add(todoLabel_1);
+
+		JLabel todoLabel_2 = new JLabel(ac.getSoftActivityList().get(0).getName());
+		todoLabel_2.setForeground(new Color(255, 255, 255));
+		todoLabel_2.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_2.setBackground(new Color(255, 255, 255));
+		todoLabel_2.setBounds(26, 39, 50, 50);
+		panel_todo.add(todoLabel_2);
+
+		JLabel todoLabel_3 = new JLabel(ac.getSoftActivityList().get(1).getName());
+		todoLabel_3.setForeground(Color.WHITE);
+		todoLabel_3.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_3.setBackground(Color.WHITE);
+		todoLabel_3.setBounds(86, 39, 50, 50);
+		panel_todo.add(todoLabel_3);
+
+		JLabel todoLabel_4 = new JLabel(ac.getSoftActivityList().get(2).getName());
+		todoLabel_4.setForeground(Color.WHITE);
+		todoLabel_4.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_4.setBackground(Color.WHITE);
+		todoLabel_4.setBounds(146, 39, 50, 50);
+		panel_todo.add(todoLabel_4);
+
+		JLabel todoLabel_5 = new JLabel(ac.getSoftActivityList().get(3).getName());
+		todoLabel_5.setForeground(Color.WHITE);
+		todoLabel_5.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_5.setBackground(Color.WHITE);
+		todoLabel_5.setBounds(206, 39, 50, 50);
+		panel_todo.add(todoLabel_5);
+
+		JLabel todoLabel_6 = new JLabel(ac.getSoftActivityList().get(4).getName());
+		todoLabel_6.setForeground(Color.WHITE);
+		todoLabel_6.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_6.setBackground(Color.WHITE);
+		todoLabel_6.setBounds(266, 39, 50, 50);
+		panel_todo.add(todoLabel_6);
+
+		JLabel todoLabel_7 = new JLabel(ac.getSoftActivityList().get(5).getName());
+		todoLabel_7.setForeground(Color.WHITE);
+		todoLabel_7.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_7.setBackground(Color.WHITE);
+		todoLabel_7.setBounds(266, 100, 50, 50);
+		panel_todo.add(todoLabel_7);
+
+		JLabel todoLabel_8 = new JLabel(ac.getSoftActivityList().get(6).getName());
+		todoLabel_8.setForeground(Color.WHITE);
+		todoLabel_8.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_8.setBackground(Color.WHITE);
+		todoLabel_8.setBounds(206, 100, 50, 50);
+		panel_todo.add(todoLabel_8);
+
+		JLabel todoLabel_9 = new JLabel(ac.getSoftActivityList().get(7).getName());
+		todoLabel_9.setForeground(Color.WHITE);
+		todoLabel_9.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_9.setBackground(Color.WHITE);
+		todoLabel_9.setBounds(146, 100, 50, 50);
+		panel_todo.add(todoLabel_9);
+
+		JLabel todoLabel_10 = new JLabel(ac.getSoftActivityList().get(8).getName());
+		todoLabel_10.setForeground(Color.WHITE);
+		todoLabel_10.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_10.setBackground(Color.WHITE);
+		todoLabel_10.setBounds(86, 100, 50, 50);
+		panel_todo.add(todoLabel_10);
+
+		JLabel todoLabel_11 = new JLabel(ac.getSoftActivityList().get(9).getName());
+		todoLabel_11.setForeground(Color.WHITE);
+		todoLabel_11.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_11.setBackground(Color.WHITE);
+		todoLabel_11.setBounds(26, 100, 50, 50);
+		panel_todo.add(todoLabel_11);
+
+		JLabel todoLabel_12 = new JLabel(ac.getSoftActivityList().get(10).getName());
+		todoLabel_12.setForeground(Color.WHITE);
+		todoLabel_12.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_12.setBackground(Color.WHITE);
+		todoLabel_12.setBounds(266, 161, 50, 50);
+		panel_todo.add(todoLabel_12);
+
+		JLabel todoLabel_13 = new JLabel(ac.getSoftActivityList().get(11).getName());
+		todoLabel_13.setForeground(Color.WHITE);
+		todoLabel_13.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_13.setBackground(Color.WHITE);
+		todoLabel_13.setBounds(206, 161, 50, 50);
+		panel_todo.add(todoLabel_13);
+
+		JLabel todoLabel_14 = new JLabel(ac.getSoftActivityList().get(12).getName());
+		todoLabel_14.setForeground(Color.WHITE);
+		todoLabel_14.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_14.setBackground(Color.WHITE);
+		todoLabel_14.setBounds(146, 161, 50, 50);
+		panel_todo.add(todoLabel_14);
+
+		JLabel todoLabel_15 = new JLabel(ac.getSoftActivityList().get(13).getName());
+		todoLabel_15.setForeground(Color.WHITE);
+		todoLabel_15.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_15.setBackground(Color.WHITE);
+		todoLabel_15.setBounds(86, 161, 50, 50);
+		panel_todo.add(todoLabel_15);
+
+		JLabel todoLabel_16 = new JLabel(ac.getSoftActivityList().get(14).getName());
+		todoLabel_16.setForeground(Color.WHITE);
+		todoLabel_16.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_16.setBackground(Color.WHITE);
+		todoLabel_16.setBounds(26, 161, 50, 50);
+		panel_todo.add(todoLabel_16);
+
+		JLabel todoLabel_17 = new JLabel(ac.getSoftActivityList().get(15).getName());
+		todoLabel_17.setForeground(Color.WHITE);
+		todoLabel_17.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_17.setBackground(Color.WHITE);
+		todoLabel_17.setBounds(266, 222, 50, 50);
+		panel_todo.add(todoLabel_17);
+
+		JLabel todoLabel_18 = new JLabel(ac.getSoftActivityList().get(16).getName());
+		todoLabel_18.setForeground(Color.WHITE);
+		todoLabel_18.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_18.setBackground(Color.WHITE);
+		todoLabel_18.setBounds(206, 222, 50, 50);
+		panel_todo.add(todoLabel_18);
+
+		JLabel todoLabel_19 = new JLabel(ac.getSoftActivityList().get(17).getName());
+		todoLabel_19.setForeground(Color.WHITE);
+		todoLabel_19.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_19.setBackground(Color.WHITE);
+		todoLabel_19.setBounds(146, 222, 50, 50);
+		panel_todo.add(todoLabel_19);
+
+		JLabel todoLabel_20 = new JLabel(ac.getSoftActivityList().get(18).getName());
+		todoLabel_20.setForeground(Color.WHITE);
+		todoLabel_20.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_20.setBackground(Color.WHITE);
+		todoLabel_20.setBounds(86, 222, 50, 50);
+		panel_todo.add(todoLabel_20);
+
+		JLabel todoLabel_21 = new JLabel(ac.getSoftActivityList().get(19).getName());
+		todoLabel_21.setForeground(Color.WHITE);
+		todoLabel_21.setFont(new Font("Arial Black", Font.BOLD, 14));
+		todoLabel_21.setBackground(Color.WHITE);
+		todoLabel_21.setBounds(26, 222, 50, 50);
+		panel_todo.add(todoLabel_21);
+
+		Panel panel_doing = new Panel();
+		panel_doing.setBackground(new Color(216, 191, 216));
+		panel_doing.setLayout(null);
+		panel_doing.setBounds(356, 10, 340, 299);
+		panel_2.add(panel_doing);
+
+		JLabel doingLabel_1 = new JLabel("DOING");
+		doingLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		doingLabel_1.setFont(new Font("Arial Black", Font.BOLD, 17));
+		doingLabel_1.setBounds(124, 11, 76, 25);
+		panel_doing.add(doingLabel_1);
+
+		JLabel doingLabel_2 = new JLabel("NAME");
+		doingLabel_2.setForeground(Color.WHITE);
+		doingLabel_2.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_2.setBackground(Color.WHITE);
+		doingLabel_2.setBounds(27, 39, 50, 50);
+		panel_doing.add(doingLabel_2);
+
+		JLabel doingLabel_3 = new JLabel("NAME");
+		doingLabel_3.setForeground(Color.WHITE);
+		doingLabel_3.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_3.setBackground(Color.WHITE);
+		doingLabel_3.setBounds(87, 39, 50, 50);
+		panel_doing.add(doingLabel_3);
+
+		JLabel doingLabel_4 = new JLabel("NAME");
+		doingLabel_4.setForeground(Color.WHITE);
+		doingLabel_4.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_4.setBackground(Color.WHITE);
+		doingLabel_4.setBounds(147, 39, 50, 50);
+		panel_doing.add(doingLabel_4);
+
+		JLabel doingLabel_5 = new JLabel("NAME");
+		doingLabel_5.setForeground(Color.WHITE);
+		doingLabel_5.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_5.setBackground(Color.WHITE);
+		doingLabel_5.setBounds(207, 39, 50, 50);
+		panel_doing.add(doingLabel_5);
+
+		JLabel doingLabel_6 = new JLabel("NAME");
+		doingLabel_6.setForeground(Color.WHITE);
+		doingLabel_6.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_6.setBackground(Color.WHITE);
+		doingLabel_6.setBounds(267, 39, 50, 50);
+		panel_doing.add(doingLabel_6);
+
+		JLabel doingLabel_7 = new JLabel("NAME");
+		doingLabel_7.setForeground(Color.WHITE);
+		doingLabel_7.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_7.setBackground(Color.WHITE);
+		doingLabel_7.setBounds(267, 100, 50, 50);
+		panel_doing.add(doingLabel_7);
+
+		JLabel doingLabel_8 = new JLabel("NAME");
+		doingLabel_8.setForeground(Color.WHITE);
+		doingLabel_8.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_8.setBackground(Color.WHITE);
+		doingLabel_8.setBounds(207, 100, 50, 50);
+		panel_doing.add(doingLabel_8);
+
+		JLabel doingLabel_9 = new JLabel("NAME");
+		doingLabel_9.setForeground(Color.WHITE);
+		doingLabel_9.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_9.setBackground(Color.WHITE);
+		doingLabel_9.setBounds(147, 100, 50, 50);
+		panel_doing.add(doingLabel_9);
+
+		JLabel doingLabel_10 = new JLabel("NAME");
+		doingLabel_10.setForeground(Color.WHITE);
+		doingLabel_10.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_10.setBackground(Color.WHITE);
+		doingLabel_10.setBounds(87, 100, 50, 50);
+		panel_doing.add(doingLabel_10);
+
+		JLabel doingLabel_11 = new JLabel("NAME");
+		doingLabel_11.setForeground(Color.WHITE);
+		doingLabel_11.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_11.setBackground(Color.WHITE);
+		doingLabel_11.setBounds(27, 100, 50, 50);
+		panel_doing.add(doingLabel_11);
+
+		JLabel doingLabel_12 = new JLabel("NAME");
+		doingLabel_12.setForeground(Color.WHITE);
+		doingLabel_12.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_12.setBackground(Color.WHITE);
+		doingLabel_12.setBounds(27, 161, 50, 50);
+		panel_doing.add(doingLabel_12);
+
+		JLabel doingLabel_13 = new JLabel("NAME");
+		doingLabel_13.setForeground(Color.WHITE);
+		doingLabel_13.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_13.setBackground(Color.WHITE);
+		doingLabel_13.setBounds(87, 161, 50, 50);
+		panel_doing.add(doingLabel_13);
+
+		JLabel doingLabel_14 = new JLabel("NAME");
+		doingLabel_14.setForeground(Color.WHITE);
+		doingLabel_14.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_14.setBackground(Color.WHITE);
+		doingLabel_14.setBounds(147, 161, 50, 50);
+		panel_doing.add(doingLabel_14);
+
+		JLabel doingLabel_15 = new JLabel("NAME");
+		doingLabel_15.setForeground(Color.WHITE);
+		doingLabel_15.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_15.setBackground(Color.WHITE);
+		doingLabel_15.setBounds(207, 161, 50, 50);
+		panel_doing.add(doingLabel_15);
+
+		JLabel doingLabel_16 = new JLabel("NAME");
+		doingLabel_16.setForeground(Color.WHITE);
+		doingLabel_16.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_16.setBackground(Color.WHITE);
+		doingLabel_16.setBounds(267, 161, 50, 50);
+		panel_doing.add(doingLabel_16);
+
+		JLabel doingLabel_17 = new JLabel("NAME");
+		doingLabel_17.setForeground(Color.WHITE);
+		doingLabel_17.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_17.setBackground(Color.WHITE);
+		doingLabel_17.setBounds(267, 222, 50, 50);
+		panel_doing.add(doingLabel_17);
+
+		JLabel doingLabel_18 = new JLabel("NAME");
+		doingLabel_18.setForeground(Color.WHITE);
+		doingLabel_18.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_18.setBackground(Color.WHITE);
+		doingLabel_18.setBounds(207, 222, 50, 50);
+		panel_doing.add(doingLabel_18);
+
+		JLabel doingLabel_19 = new JLabel("NAME");
+		doingLabel_19.setForeground(Color.WHITE);
+		doingLabel_19.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_19.setBackground(Color.WHITE);
+		doingLabel_19.setBounds(147, 222, 50, 50);
+		panel_doing.add(doingLabel_19);
+
+		JLabel doingLabel_20 = new JLabel("NAME");
+		doingLabel_20.setForeground(Color.WHITE);
+		doingLabel_20.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_20.setBackground(Color.WHITE);
+		doingLabel_20.setBounds(87, 222, 50, 50);
+		panel_doing.add(doingLabel_20);
+
+		JLabel doingLabel_21 = new JLabel("NAME");
+		doingLabel_21.setForeground(Color.WHITE);
+		doingLabel_21.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doingLabel_21.setBackground(Color.WHITE);
+		doingLabel_21.setBounds(27, 222, 50, 50);
+		panel_doing.add(doingLabel_21);
+
+		Panel panel_done = new Panel();
+		panel_done.setBackground(new Color(221, 160, 221));
+		panel_done.setLayout(null);
+		panel_done.setBounds(702, 10, 340, 299);
+		panel_2.add(panel_done);
+
+		JLabel doneLabel_1 = new JLabel("DONE");
+		doneLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		doneLabel_1.setFont(new Font("Arial Black", Font.BOLD, 17));
+		doneLabel_1.setBounds(134, 11, 76, 19);
+		panel_done.add(doneLabel_1);
+
+		JLabel doneLabel_2 = new JLabel("NAME");
+		doneLabel_2.setForeground(Color.WHITE);
+		doneLabel_2.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_2.setBackground(Color.WHITE);
+		doneLabel_2.setBounds(28, 38, 50, 50);
+		panel_done.add(doneLabel_2);
+
+		JLabel doneLabel_3 = new JLabel("NAME");
+		doneLabel_3.setForeground(Color.WHITE);
+		doneLabel_3.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_3.setBackground(Color.WHITE);
+		doneLabel_3.setBounds(88, 38, 50, 50);
+		panel_done.add(doneLabel_3);
+
+		JLabel doneLabel_4 = new JLabel("NAME");
+		doneLabel_4.setForeground(Color.WHITE);
+		doneLabel_4.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_4.setBackground(Color.WHITE);
+		doneLabel_4.setBounds(148, 38, 50, 50);
+		panel_done.add(doneLabel_4);
+
+		JLabel doneLabel_5 = new JLabel("NAME");
+		doneLabel_5.setForeground(Color.WHITE);
+		doneLabel_5.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_5.setBackground(Color.WHITE);
+		doneLabel_5.setBounds(208, 38, 50, 50);
+		panel_done.add(doneLabel_5);
+
+		JLabel doneLabel_6 = new JLabel("NAME");
+		doneLabel_6.setForeground(Color.WHITE);
+		doneLabel_6.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_6.setBackground(Color.WHITE);
+		doneLabel_6.setBounds(268, 38, 50, 50);
+		panel_done.add(doneLabel_6);
+
+		JLabel doneLabel_7 = new JLabel("NAME");
+		doneLabel_7.setForeground(Color.WHITE);
+		doneLabel_7.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_7.setBackground(Color.WHITE);
+		doneLabel_7.setBounds(268, 99, 50, 50);
+		panel_done.add(doneLabel_7);
+
+		JLabel doneLabel_8 = new JLabel("NAME");
+		doneLabel_8.setForeground(Color.WHITE);
+		doneLabel_8.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_8.setBackground(Color.WHITE);
+		doneLabel_8.setBounds(208, 99, 50, 50);
+		panel_done.add(doneLabel_8);
+
+		JLabel doneLabel_9 = new JLabel("NAME");
+		doneLabel_9.setForeground(Color.WHITE);
+		doneLabel_9.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_9.setBackground(Color.WHITE);
+		doneLabel_9.setBounds(148, 99, 50, 50);
+		panel_done.add(doneLabel_9);
+
+		JLabel doneLabel_10 = new JLabel("NAME");
+		doneLabel_10.setForeground(Color.WHITE);
+		doneLabel_10.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_10.setBackground(Color.WHITE);
+		doneLabel_10.setBounds(88, 99, 50, 50);
+		panel_done.add(doneLabel_10);
+
+		JLabel doneLabel_11 = new JLabel("NAME");
+		doneLabel_11.setForeground(Color.WHITE);
+		doneLabel_11.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_11.setBackground(Color.WHITE);
+		doneLabel_11.setBounds(28, 99, 50, 50);
+		panel_done.add(doneLabel_11);
+
+		JLabel doneLabel_12 = new JLabel("NAME");
+		doneLabel_12.setForeground(Color.WHITE);
+		doneLabel_12.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_12.setBackground(Color.WHITE);
+		doneLabel_12.setBounds(28, 160, 50, 50);
+		panel_done.add(doneLabel_12);
+
+		JLabel doneLabel_13 = new JLabel("NAME");
+		doneLabel_13.setForeground(Color.WHITE);
+		doneLabel_13.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_13.setBackground(Color.WHITE);
+		doneLabel_13.setBounds(88, 160, 50, 50);
+		panel_done.add(doneLabel_13);
+
+		JLabel doneLabel_14 = new JLabel("NAME");
+		doneLabel_14.setForeground(Color.WHITE);
+		doneLabel_14.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_14.setBackground(Color.WHITE);
+		doneLabel_14.setBounds(148, 160, 50, 50);
+		panel_done.add(doneLabel_14);
+
+		JLabel doneLabel_15 = new JLabel("NAME");
+		doneLabel_15.setForeground(Color.WHITE);
+		doneLabel_15.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_15.setBackground(Color.WHITE);
+		doneLabel_15.setBounds(208, 160, 50, 50);
+		panel_done.add(doneLabel_15);
+
+		JLabel doneLabel_16 = new JLabel("NAME");
+		doneLabel_16.setForeground(Color.WHITE);
+		doneLabel_16.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_16.setBackground(Color.WHITE);
+		doneLabel_16.setBounds(268, 160, 50, 50);
+		panel_done.add(doneLabel_16);
+
+		JLabel doneLabel_17 = new JLabel("NAME");
+		doneLabel_17.setForeground(Color.WHITE);
+		doneLabel_17.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_17.setBackground(Color.WHITE);
+		doneLabel_17.setBounds(268, 221, 50, 50);
+		panel_done.add(doneLabel_17);
+
+		JLabel doneLabel_18 = new JLabel("NAME");
+		doneLabel_18.setForeground(Color.WHITE);
+		doneLabel_18.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_18.setBackground(Color.WHITE);
+		doneLabel_18.setBounds(208, 221, 50, 50);
+		panel_done.add(doneLabel_18);
+
+		JLabel doneLabel_19 = new JLabel("NAME");
+		doneLabel_19.setForeground(Color.WHITE);
+		doneLabel_19.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_19.setBackground(Color.WHITE);
+		doneLabel_19.setBounds(148, 221, 50, 50);
+		panel_done.add(doneLabel_19);
+
+		JLabel doneLabel_20 = new JLabel("NAME");
+		doneLabel_20.setForeground(Color.WHITE);
+		doneLabel_20.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_20.setBackground(Color.WHITE);
+		doneLabel_20.setBounds(88, 221, 50, 50);
+		panel_done.add(doneLabel_20);
+
+		JLabel doneLabel_21 = new JLabel("NAME");
+		doneLabel_21.setForeground(Color.WHITE);
+		doneLabel_21.setFont(new Font("Arial Black", Font.BOLD, 14));
+		doneLabel_21.setBackground(Color.WHITE);
+		doneLabel_21.setBounds(28, 221, 50, 50);
+		panel_done.add(doneLabel_21);
+
+		Panel panel_title = new Panel();
+		panel_title.setBackground(new Color(128, 0, 128));
+		panel_title.setBounds(0, 0, 230, 78);
+		frame.getContentPane().add(panel_title);
+		panel_title.setLayout(null);
+
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel.setBounds(10, 11, 210, 56);
+		panel_title.add(lblNewLabel);
+
+		Panel panel_feed = new Panel();
+		panel_feed.setBackground(new Color(51, 51, 51));
+		panel_feed.setForeground(Color.WHITE);
+		panel_feed.setBounds(0, 0, 230, 641);
+		frame.getContentPane().add(panel_feed);
+		panel_feed.setLayout(null);
+
+		Label label = new Label("Number Activity: ");
+		label.setFont(new Font("Arial Black", Font.BOLD, 14));
+		label.setBounds(10, 209, 124, 22);
+		panel_feed.add(label);
+
 		Label label_1 = new Label("Number Sprint:");
 		label_1.setFont(new Font("Arial", Font.BOLD, 14));
 		label_1.setBounds(10, 237, 124, 22);
-		panel.add(label_1);
-		
-		JButton btnStart = new JButton("Start");
-		btnStart.setForeground(Color.WHITE);
-		btnStart.setFont(new Font("Arial Black", Font.BOLD, 14));
-		btnStart.setBackground(new Color(128, 0, 128));
-		btnStart.setBounds(10, 91, 96, 35);
-		panel.add(btnStart);
-		
-		JButton btnStop = new JButton("Stop");
-		btnStop.setForeground(Color.WHITE);
-		btnStop.setFont(new Font("Arial", Font.BOLD, 14));
-		btnStop.setBackground(new Color(128, 0, 128));
-		btnStop.setBounds(116, 92, 99, 35);
-		panel.add(btnStop);
-		
-		JLabel lblTime = new JLabel("(00:00:00)");
-		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTime.setForeground(new Color(255, 255, 255));
-		lblTime.setFont(new Font("Arial Black", Font.BOLD, 20));
-		lblTime.setBounds(29, 148, 161, 35);
-		panel.add(lblTime);
+		panel_feed.add(label_1);
+
+		Label label_5 = new Label("(0 / 0)");
+		label_5.setFont(new Font("Arial Black", Font.BOLD, 14));
+		label_5.setBounds(140, 209, 60, 22);
+		panel_feed.add(label_5);
+
+		Label label_5_1 = new Label("(0 / 0)");
+		label_5_1.setFont(new Font("Arial Black", Font.BOLD, 14));
+		label_5_1.setBounds(140, 237, 60, 22);
+		panel_feed.add(label_5_1);
+
+		JButton btnStart_1 = new JButton("Start");
+
+		btnStart_1.setForeground(Color.WHITE);
+		btnStart_1.setFont(new Font("Arial Black", Font.BOLD, 14));
+		btnStart_1.setBackground(new Color(128, 0, 128));
+		btnStart_1.setBounds(10, 91, 96, 35);
+		panel_feed.add(btnStart_1);
+
+		JButton btnStop_1 = new JButton("Stop");
+		btnStop_1.setForeground(Color.WHITE);
+		btnStop_1.setFont(new Font("Arial", Font.BOLD, 14));
+		btnStop_1.setBackground(new Color(128, 0, 128));
+		btnStop_1.setBounds(116, 92, 99, 35);
+		panel_feed.add(btnStop_1);
+
+		JLabel lblNewLabel_3 = new JLabel("(00:00:00)");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setFont(new Font("Arial Black", Font.BOLD, 20));
+		lblNewLabel_3.setBounds(29, 148, 161, 35);
+		panel_feed.add(lblNewLabel_3);
 	}
 }
