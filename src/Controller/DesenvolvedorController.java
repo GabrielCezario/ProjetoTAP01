@@ -123,6 +123,7 @@ public class DesenvolvedorController implements Runnable{
 				listOfSoftwareActivityDone.add(softwareActivity);
 			}
 			
+			SystemController.accounting(softwareActivity.getInitialLetters());
 			AtividadeController.setListOfSoftwareActivityDone(listOfSoftwareActivityDone);
 		}
 		
