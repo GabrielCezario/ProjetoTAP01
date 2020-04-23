@@ -9,7 +9,6 @@ public class Developer {
 	private int activityExecutionTime;
 	private DeveloperTime developmentExperience;
 	
-	
 	//5000 Is the time (in milliseconds) that developer make your software activity
 	
 	public Developer() {
@@ -38,6 +37,7 @@ public class Developer {
 	public DeveloperTime getDevelopmentExperience() {
 		return this.developmentExperience;
 	}
+	
 	private void setDevCategory() {
 		if (getDevelopmentExperience().getProp() == 3000) {
 			this.devCategory = "Programador Júnior";
@@ -49,6 +49,7 @@ public class Developer {
 			this.devCategory = "Programador Sênior";
 		}
 	}
+	
 	public String getDevCategory() {
 		return this.devCategory;
 	}
