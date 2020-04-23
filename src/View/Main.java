@@ -45,6 +45,8 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
+		AtividadeController ac = new AtividadeController();
+		ac.test();
 		loadInitialMethods();
 		initialize();
 	}
@@ -91,13 +93,13 @@ public class Main {
 		Dev01.setLayout(null);
 
 		JLabel lblDev01 = new JLabel();
-		lblDev01.setText(dc.getDeveloperList().get(0).getName());
+		lblDev01.setText(dc.getInitDevelopersName());
 		lblDev01.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01.setBounds(10, 11, 207, 14);
 		Dev01.add(lblDev01);
 
 		JLabel lblActivity01 = new JLabel();
-		lblActivity01.setText("New label");
+		lblActivity01.setText(dc.getInitDevelopersExp());
 		lblActivity01.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01.setBounds(10, 41, 207, 14);
 		Dev01.add(lblActivity01);
@@ -112,13 +114,13 @@ public class Main {
 		Dev01_1.setBounds(270, 337, 250, 66);
 		panel_2.add(Dev01_1);
 
-		JLabel lblDev01_1 = new JLabel(dc.getDeveloperList().get(1).getName());
+		JLabel lblDev01_1 = new JLabel(dc.getInitDevelopersName());
 		lblDev01_1.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01_1.setBounds(10, 11, 207, 14);
 		Dev01_1.add(lblDev01_1);
 
-		JLabel lblActivity01_1 = new JLabel();
-		lblActivity01_1.setText("New Label");
+		JLabel lblActivity01_1 = new JLabel(dc.getInitDevelopersExp());
+		lblActivity01_1.setText(dc.getInitDevelopersExp());
 		lblActivity01_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01_1.setBounds(10, 41, 207, 14);
 		Dev01_1.add(lblActivity01_1);
@@ -132,12 +134,13 @@ public class Main {
 		Dev01_2.setBounds(530, 337, 250, 66);
 		panel_2.add(Dev01_2);
 
-		JLabel lblDev01_2 = new JLabel(dc.getDeveloperList().get(2).getName());
+		JLabel lblDev01_2 = new JLabel(dc.getInitDevelopersName());
 		lblDev01_2.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01_2.setBounds(10, 11, 207, 14);
 		Dev01_2.add(lblDev01_2);
 
-		JLabel lblActivity01_2 = new JLabel("New label");
+		JLabel lblActivity01_2 = new JLabel();
+		lblActivity01_2.setText(dc.getInitDevelopersExp());
 		lblActivity01_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01_2.setBounds(10, 41, 207, 14);
 		Dev01_2.add(lblActivity01_2);
@@ -151,12 +154,13 @@ public class Main {
 		Dev01_3.setBounds(789, 337, 250, 66);
 		panel_2.add(Dev01_3);
 
-		JLabel lblDev01_3 = new JLabel(dc.getDeveloperList().get(3).getName());
+		JLabel lblDev01_3 = new JLabel(dc.getInitDevelopersName());
 		lblDev01_3.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01_3.setBounds(10, 11, 207, 14);
 		Dev01_3.add(lblDev01_3);
 
-		JLabel lblActivity01_3 = new JLabel("New label");
+		JLabel lblActivity01_3 = new JLabel();
+		lblActivity01_3.setText(dc.getInitDevelopersExp());
 		lblActivity01_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01_3.setBounds(10, 41, 207, 14);
 		Dev01_3.add(lblActivity01_3);
@@ -170,12 +174,13 @@ public class Main {
 		Dev01_3_1.setBounds(10, 467, 250, 66);
 		panel_2.add(Dev01_3_1);
 
-		JLabel lblDev01_3_1 = new JLabel(dc.getDeveloperList().get(4).getName());
+		JLabel lblDev01_3_1 = new JLabel(dc.getInitDevelopersName());
 		lblDev01_3_1.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01_3_1.setBounds(10, 11, 207, 14);
 		Dev01_3_1.add(lblDev01_3_1);
 
-		JLabel lblActivity01_3_1 = new JLabel("New label");
+		JLabel lblActivity01_3_1 = new JLabel();
+		lblActivity01_3_1.setText(dc.getInitDevelopersExp());
 		lblActivity01_3_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01_3_1.setBounds(10, 41, 207, 14);
 		Dev01_3_1.add(lblActivity01_3_1);
@@ -189,12 +194,13 @@ public class Main {
 		Dev01_3_2.setBounds(270, 467, 250, 66);
 		panel_2.add(Dev01_3_2);
 
-		JLabel lblDev01_3_2 = new JLabel(dc.getDeveloperList().get(5).getName());
+		JLabel lblDev01_3_2 = new JLabel(dc.getInitDevelopersName());
 		lblDev01_3_2.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01_3_2.setBounds(10, 11, 207, 14);
 		Dev01_3_2.add(lblDev01_3_2);
 
-		JLabel lblActivity01_3_2 = new JLabel("New label");
+		JLabel lblActivity01_3_2 = new JLabel();
+		lblActivity01_3_2.setText(dc.getInitDevelopersExp());
 		lblActivity01_3_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01_3_2.setBounds(10, 41, 207, 14);
 		Dev01_3_2.add(lblActivity01_3_2);
@@ -208,12 +214,13 @@ public class Main {
 		Dev01_3_3.setBounds(530, 467, 250, 66);
 		panel_2.add(Dev01_3_3);
 
-		JLabel lblDev01_3_3 = new JLabel(dc.getDeveloperList().get(6).getName());
+		JLabel lblDev01_3_3 = new JLabel(dc.getInitDevelopersName());
 		lblDev01_3_3.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01_3_3.setBounds(10, 11, 207, 14);
 		Dev01_3_3.add(lblDev01_3_3);
 
-		JLabel lblActivity01_3_3 = new JLabel("New label");
+		JLabel lblActivity01_3_3 = new JLabel();
+		lblActivity01_3_3.setText(dc.getInitDevelopersExp());
 		lblActivity01_3_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01_3_3.setBounds(10, 41, 207, 14);
 		Dev01_3_3.add(lblActivity01_3_3);
@@ -227,12 +234,13 @@ public class Main {
 		Dev01_3_4.setBounds(789, 467, 250, 66);
 		panel_2.add(Dev01_3_4);
 
-		JLabel lblDev01_3_4 = new JLabel(dc.getDeveloperList().get(7).getName());
+		JLabel lblDev01_3_4 = new JLabel(dc.getInitDevelopersName());
 		lblDev01_3_4.setFont(new Font("Arial Black", Font.BOLD, 12));
 		lblDev01_3_4.setBounds(10, 11, 207, 14);
 		Dev01_3_4.add(lblDev01_3_4);
 
-		JLabel lblActivity01_3_4 = new JLabel("New label");
+		JLabel lblActivity01_3_4 = new JLabel();
+		lblActivity01_3_4.setText(dc.getInitDevelopersExp());
 		lblActivity01_3_4.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblActivity01_3_4.setBounds(10, 41, 207, 14);
 		Dev01_3_4.add(lblActivity01_3_4);

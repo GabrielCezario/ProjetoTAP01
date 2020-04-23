@@ -3,20 +3,19 @@ package Model;
 import Util.Enum.ActivityTime;
 
 public class SoftwareActivity {
-	
+
 	private String name;
-	private ActivityTime activityExperience; 
 	private String initialLetters;
-	private int priority;
+	private ActivityTime activityExperience;
 	
 	public SoftwareActivity() {
-		
+
 	}
-	
-	public SoftwareActivity(String name, ActivityTime activityExperience, String initialLetters) {
+
+	public SoftwareActivity(String name, ActivityTime activityExperience) {
 		this.name = name;
 		this.activityExperience = activityExperience;
-		this.initialLetters = initialLetters;
+		setInitialLetters();
 	}
 
 	public String getName() {
@@ -31,9 +30,23 @@ public class SoftwareActivity {
 		return initialLetters;
 	}
 
-	public void setInitialLetters(String initialLetters) {
-		this.initialLetters = initialLetters;
+	private void setInitialLetters() {
+		switch (this.name) {
+		case "Analyzing Requirements":
+			this.initialLetters = "AR";
+			break;
+		case "Developing":
+			this.initialLetters = "D";
+			break;
+		case "Creating Tests":
+			this.initialLetters = "CT";
+			break;
+		case "Fixing Bugs":
+			this.initialLetters = "FB";
+			break;
+		case "Analyzing Backlog":
+			this.initialLetters = "AB";
+			break;
+	}	
 	}
-	
-
 }

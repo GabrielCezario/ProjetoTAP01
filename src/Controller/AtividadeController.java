@@ -10,57 +10,57 @@ import Model.SoftwareActivity;
 import Util.Enum.ActivityTime;
 
 public class AtividadeController {
-	
+
 	public AtividadeController() {
 		generateSoftwareActivity();
 	}
- 	
+
 	private List<SoftwareActivity> listOfSoftwareActivity = new ArrayList<SoftwareActivity>();
-	private List<String> listNameOfSoftwareActivity = new ArrayList<String>();
-	private List<ActivityTime> listLvlOfSoftwareActivity = new ArrayList<ActivityTime>();
-	
+	private List<String> listOfSoftwareActivityName = new ArrayList<String>();
+	private List<ActivityTime> listOfSoftwareActivityLvl = new ArrayList<ActivityTime>();
+
 	public List<SoftwareActivity> getSoftActivityList() {
 		return this.listOfSoftwareActivity;
 	}
-	
-	//Private Methods
-	//---------------------------------------------------------------------------------------------------------------------------------------------
-	
-	private void generateSoftwareActivityName() {
-		this.listNameOfSoftwareActivity.add("AR - Analyzing Requirements");
-		this.listNameOfSoftwareActivity.add("D - DDeveloping");
-		this.listNameOfSoftwareActivity.add("CT - Creating Tests");
-		this.listNameOfSoftwareActivity.add("FB - Fixing Bugs");
-		this.listNameOfSoftwareActivity.add("AB - Analyzing Backlog");
-	}
-	
-	private void generateSoftwareActivityLvl() {
-		this.listLvlOfSoftwareActivity.add(ActivityTime.JUNIOR);
-		this.listLvlOfSoftwareActivity.add(ActivityTime.MIDDLE);
-		this.listLvlOfSoftwareActivity.add(ActivityTime.SENIOR);
-	}
-	
-	private int generateNumberRange(int min, int max) {
-        Random random = new Random();
-        return random.nextInt((max - min) + 1) + min;
-    }
-	
-	private void generateSoftwareActivity() {	
+
+	// Private Methods
+	// ---------------------------------------------------------------------------------------------------------------------------------------------
+	private void generateSoftwareActivity() {
 		int numberSoftwareActivity = generateNumberRange(150, 300);
-		
-		generateSoftwareActivityName();
 		generateSoftwareActivityLvl();
-		
-		
+		generateSoftwareActivityName();
+
 		for (int i = 0; i < numberSoftwareActivity; i++) {
-			Collections.shuffle(listNameOfSoftwareActivity);
-			Collections.shuffle(listLvlOfSoftwareActivity);
-			
-			String name = listNameOfSoftwareActivity.get(0);
-			String softwareActivityName = name.substring(5, name.length());
-			String softwareActivityInitialLetters = name.substring(0, 2);
-			
-			this.listOfSoftwareActivity.add(new SoftwareActivity(softwareActivityName, listLvlOfSoftwareActivity.get(0), softwareActivityInitialLetters));
+			Collections.shuffle(listOfSoftwareActivityName);
+			Collections.shuffle(listOfSoftwareActivityLvl);
+
+			this.listOfSoftwareActivity
+					.add(new SoftwareActivity(listOfSoftwareActivityName.get(0), listOfSoftwareActivityLvl.get(0)));
+		}
+	}
+
+	private void generateSoftwareActivityLvl() {
+		this.listOfSoftwareActivityLvl.add(ActivityTime.JUNIOR);
+		this.listOfSoftwareActivityLvl.add(ActivityTime.MIDDLE);
+		this.listOfSoftwareActivityLvl.add(ActivityTime.SENIOR);
+	}
+
+	private void generateSoftwareActivityName() {
+		this.listOfSoftwareActivityName.add("Analyzing Requirements");
+		this.listOfSoftwareActivityName.add("Developing");
+		this.listOfSoftwareActivityName.add("Creating Tests");
+		this.listOfSoftwareActivityName.add("Fixing Bugs");
+		this.listOfSoftwareActivityName.add("Analyzing Backlog");
+	}
+
+	private int generateNumberRange(int min, int max) {
+		Random random = new Random();
+		return random.nextInt((max - min) + 1) + min;
+	}
+
+	public void test() { // Names and initial letters working perfectly
+		for (SoftwareActivity ea : listOfSoftwareActivity) {
+			System.out.println(ea.getName() + " " + ea.getInitialLetters());
 		}
 	}
 

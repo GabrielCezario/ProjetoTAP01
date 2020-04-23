@@ -5,8 +5,10 @@ import Util.Enum.DeveloperTime;
 public class Developer {
 	
 	private String name;
+	private String devCategory;
 	private int activityExecutionTime;
-	private DeveloperTime developmentExperience; 
+	private DeveloperTime developmentExperience;
+	
 	
 	//5000 Is the time (in milliseconds) that developer make your software activity
 	
@@ -18,6 +20,7 @@ public class Developer {
 		this.name = name;
 		this.activityExecutionTime = 5000;
 		this.developmentExperience = developmentExperience;
+		setDevCategory();
 	}
 
 	public String getName() {
@@ -29,11 +32,25 @@ public class Developer {
 	}
 
 	public int getActivityExecutionTime() {
-		return activityExecutionTime;
+		return this.activityExecutionTime;
 	}
 
 	public DeveloperTime getDevelopmentExperience() {
-		return developmentExperience;
+		return this.developmentExperience;
 	}
-
+	private void setDevCategory() {
+		if (getDevelopmentExperience().getProp() == 3000) {
+			this.devCategory = "Programador Júnior";
+		}
+		if (getDevelopmentExperience().getProp() == 2000) {
+			this.devCategory = "Programador Pleno";
+		}
+		if (getDevelopmentExperience().getProp() == 1000) {
+			this.devCategory = "Programador Sênior";
+		}
+	}
+	public String getDevCategory() {
+		return this.devCategory;
+	}
+	
 }

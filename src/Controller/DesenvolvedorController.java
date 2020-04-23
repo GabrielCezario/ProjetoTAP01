@@ -7,26 +7,25 @@ import java.util.Collections;
 import java.util.List;
 
 public class DesenvolvedorController {
+	private int getIndexInit = 0;
 
 	public DesenvolvedorController() {
 		generateDevsList();
 	}
-	
+
 	private List<Developer> listOfDevelopers = new ArrayList<Developer>();
 	private List<String> listDevNames = new ArrayList<String>();
 	private List<DeveloperTime> listDevExperience = new ArrayList<DeveloperTime>();
 
-	private List<Developer> generateDevsList() {
+	private void generateDevsList() {
 
 		generateDevNames();
 		generateDevExperience();
-		
-		for (int i = 0; i < SystemController.numberOfThreads; i++) {
+
+		for (int i = 0; i < 8; i++) {
 			Collections.shuffle(listDevExperience);
 			this.listOfDevelopers.add(new Developer(listDevNames.get(i), listDevExperience.get(0)));
 		}
-
-		return listOfDevelopers;
 	}
 
 	private void generateDevNames() {
@@ -38,7 +37,6 @@ public class DesenvolvedorController {
 		this.listDevNames.add("Satoshi Nakamoto");
 		this.listDevNames.add("Dennis Ritchie");
 		this.listDevNames.add("Bill Gates");
-		this.listDevNames.add("Ronaldinho Gaucho");
 
 	}
 
@@ -47,9 +45,21 @@ public class DesenvolvedorController {
 		this.listDevExperience.add(DeveloperTime.MIDDLE);
 		this.listDevExperience.add(DeveloperTime.SENIOR);
 	}
-	
-	public List<Developer> getDeveloperList() {
-		return this.listOfDevelopers;
+
+	public String getInitDevelopersName() {
+		verifyIndex();
+		return this.listOfDevelopers.get(getIndexInit++).getName();
+		
+	}
+	public String getInitDevelopersExp() {
+		verifyIndex();
+		return this.listOfDevelopers.get(getIndexInit++).getDevCategory();
+		
+	}
+	private void verifyIndex() {
+		if (getIndexInit == listOfDevelopers.size()) {
+			this.getIndexInit = 0;
+		}
 	}
 
 }
