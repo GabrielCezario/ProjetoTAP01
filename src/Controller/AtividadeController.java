@@ -2,6 +2,7 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -10,7 +11,10 @@ import Util.Enum.ActivityTime;
 
 public class AtividadeController {
 	
-	private List<SoftwareActivity> listOfSoftwareActivity = new ArrayList<SoftwareActivity>();
+	private static LinkedList<SoftwareActivity> listOfSoftwareActivity = new LinkedList<SoftwareActivity>();
+	private static LinkedList<SoftwareActivity> listOfSoftwareActivityDoing = new LinkedList<SoftwareActivity>();
+	private static LinkedList<SoftwareActivity> listOfSoftwareActivityDone = new LinkedList<SoftwareActivity>();
+	
 	private List<String> listOfSoftwareActivityName = new ArrayList<String>();
 	private List<ActivityTime> listOfSoftwareActivityLvl = new ArrayList<ActivityTime>();
 
@@ -22,9 +26,36 @@ public class AtividadeController {
 	// Public Methods
 	// ---------------------------------------------------------------------------------------------------------------------------------------------
 
-	public List<SoftwareActivity> getSoftActivityList() {
+	public LinkedList<SoftwareActivity> getSoftActivityList() {
 		return this.listOfSoftwareActivity;
 	}
+	
+	public LinkedList<SoftwareActivity> getSoftActivityListDoing() {
+		return this.listOfSoftwareActivityDoing;
+	}
+	
+	public LinkedList<SoftwareActivity> getSoftActivityListDone() {
+		return this.listOfSoftwareActivityDone;
+	}
+	
+	public static void setListOfSoftwareActivity(LinkedList<SoftwareActivity> listOfSoftwareActivity) {
+		listOfSoftwareActivity = listOfSoftwareActivity;
+	}
+
+	public static void setListOfSoftwareActivityDoing(LinkedList<SoftwareActivity> listOfSoftwareActivityDoing) {
+		listOfSoftwareActivityDoing = listOfSoftwareActivityDoing;
+	}
+
+	public static void setListOfSoftwareActivityDone(LinkedList<SoftwareActivity> listOfSoftwareActivityDone) {
+		listOfSoftwareActivityDone = listOfSoftwareActivityDone;
+	}
+
+	public void test() { // Names and initial letters working perfectly
+		for (SoftwareActivity ea : listOfSoftwareActivity) {
+			System.out.println(ea.getName() + " " + ea.getInitialLetters());
+		}
+	}
+
 
 	// Private Methods
 	// ---------------------------------------------------------------------------------------------------------------------------------------------

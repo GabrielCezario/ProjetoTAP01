@@ -1,16 +1,21 @@
 package Controller;
 
-import Model.Developer;
-import Util.Enum.DeveloperTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+
+import Model.Developer;
+import Model.SoftwareActivity;
+import Util.Enum.DeveloperTime;
 
 public class DesenvolvedorController implements Runnable{
 	
 	private List<Developer> listOfDevelopers = new ArrayList<Developer>();
 	private List<String> listDevNames = new ArrayList<String>();
 	private List<DeveloperTime> listDevExperience = new ArrayList<DeveloperTime>();
+	
+	private static AtividadeController atividadeController;
 	
 	private int getIndexInit = 0;
 
@@ -23,7 +28,9 @@ public class DesenvolvedorController implements Runnable{
 	//------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	public void run() {
-		
+		while(true) {
+			//startProgramming();			
+		}
 	}
 	
 	public String getInitDevelopersName() {
@@ -73,6 +80,54 @@ public class DesenvolvedorController implements Runnable{
 		if (getIndexInit == listOfDevelopers.size()) {
 			this.getIndexInit = 0;
 		}
+	}
+	
+	private synchronized void startProgramming() {
+		LinkedList<SoftwareActivity> listOfSoftwareActivity = atividadeController.getSoftActivityList();
+		LinkedList<SoftwareActivity> listOfSoftwareActivityDoing = null;
+		LinkedList<SoftwareActivity> listOfSoftwareActivityDone = null;
+		
+		SoftwareActivity softwareActivity = null;
+				
+		if(atividadeController.getSoftActivityList().size() != 0) {
+			
+			softwareActivity = listOfSoftwareActivity.pop();
+			int timeActivity = softwareActivity.getSoftwareActivityExperience().getProp();
+			
+			AtividadeController.setListOfSoftwareActivity(listOfSoftwareActivity);
+			
+			try {
+				listOfSoftwareActivityDoing = atividadeController.getSoftActivityListDoing();
+				
+				if(listOfSoftwareActivityDoing == null) {
+					listOfSoftwareActivityDoing = new LinkedList<SoftwareActivity>();
+					listOfSoftwareActivityDoing.add(softwareActivity);
+				} else {
+					listOfSoftwareActivityDoing.add(softwareActivity);
+				}
+				
+				AtividadeController.setListOfSoftwareActivityDoing(listOfSoftwareActivityDoing);
+				Thread.sleep(timeActivity);
+				
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			listOfSoftwareActivityDoing.remove(softwareActivity);
+			listOfSoftwareActivityDone = atividadeController.getSoftActivityListDone();
+			
+			if(listOfSoftwareActivityDone == null) {
+				listOfSoftwareActivityDone = new LinkedList<SoftwareActivity>();
+				listOfSoftwareActivityDone.add(softwareActivity);
+			} else {
+				listOfSoftwareActivityDone.add(softwareActivity);
+			}
+			
+			SystemController.accounting(softwareActivity.getInitialLetters());
+			AtividadeController.setListOfSoftwareActivityDone(listOfSoftwareActivityDone);
+		}
+		
+		
 	}
 
 }
