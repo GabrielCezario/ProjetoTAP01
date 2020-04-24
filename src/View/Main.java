@@ -45,23 +45,17 @@ public class Main {
 	 * Create the application.
 	 */
 	public Main() {
-		AtividadeController ac = new AtividadeController();
-		ac.test();
 		loadInitialMethods();
 		initialize();
 	}
 	
 	public void loadInitialMethods() {
 		SystemController.getNumberOfThreadsFromComputer();
-		initDevs();
-		initActivity();
+		initComponents();
 	}
 	
-	private void initDevs() {
+	private void initComponents() {
 		dc = new DesenvolvedorController();
-	}
-
-	private void initActivity() {
 		ac = new AtividadeController();
 	}
 

@@ -25,12 +25,6 @@ public class AtividadeController {
 	public List<SoftwareActivity> getSoftActivityList() {
 		return this.listOfSoftwareActivity;
 	}
-	
-	public void test() { // Names and initial letters working perfectly
-		for (SoftwareActivity ea : listOfSoftwareActivity) {
-			System.out.println(ea.getName() + " " + ea.getInitialLetters());
-		}
-	}
 
 	// Private Methods
 	// ---------------------------------------------------------------------------------------------------------------------------------------------
