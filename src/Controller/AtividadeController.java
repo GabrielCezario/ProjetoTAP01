@@ -11,6 +11,8 @@ import Util.Enum.ActivityTime;
 
 public class AtividadeController {
 	
+	int numberSoftwareActivity = generateNumberRange(150, 300);
+	
 	private static LinkedList<SoftwareActivity> listOfSoftwareActivity = new LinkedList<SoftwareActivity>();
 	private static LinkedList<SoftwareActivity> listOfSoftwareActivityDoing = new LinkedList<SoftwareActivity>();
 	private static LinkedList<SoftwareActivity> listOfSoftwareActivityDone = new LinkedList<SoftwareActivity>();
@@ -26,16 +28,16 @@ public class AtividadeController {
 	// Public Methods
 	// ---------------------------------------------------------------------------------------------------------------------------------------------
 
-	public LinkedList<SoftwareActivity> getSoftActivityList() {
-		return this.listOfSoftwareActivity;
+	public static LinkedList<SoftwareActivity> getSoftActivityList() {
+		return listOfSoftwareActivity;
 	}
 	
-	public LinkedList<SoftwareActivity> getSoftActivityListDoing() {
-		return this.listOfSoftwareActivityDoing;
+	public static LinkedList<SoftwareActivity> getSoftActivityListDoing() {
+		return listOfSoftwareActivityDoing;
 	}
 	
-	public LinkedList<SoftwareActivity> getSoftActivityListDone() {
-		return this.listOfSoftwareActivityDone;
+	public static LinkedList<SoftwareActivity> getSoftActivityListDone() {
+		return listOfSoftwareActivityDone;
 	}
 	
 	public static void setListOfSoftwareActivity(LinkedList<SoftwareActivity> listOfSoftwareActivity) {
@@ -49,11 +51,9 @@ public class AtividadeController {
 	public static void setListOfSoftwareActivityDone(LinkedList<SoftwareActivity> listOfSoftwareActivityDone) {
 		listOfSoftwareActivityDone = listOfSoftwareActivityDone;
 	}
-
-	public void test() { // Names and initial letters working perfectly
-		for (SoftwareActivity ea : listOfSoftwareActivity) {
-			System.out.println(ea.getName() + " " + ea.getInitialLetters());
-		}
+	
+	public synchronized static SoftwareActivity atenderProximo() {
+		return listOfSoftwareActivity.pop();
 	}
 
 	// Private Methods
@@ -74,21 +74,24 @@ public class AtividadeController {
 	}
 	
 	private void generateSoftwareActivity() {
-		int numberSoftwareActivity = generateNumberRange(150, 300);
+		
 		generateSoftwareActivityLvl();
 		generateSoftwareActivityName();
-
+		
+		SystemController.numberOfActivityToDo = numberSoftwareActivity;
+		
 		for (int i = 0; i < numberSoftwareActivity; i++) {
 			Collections.shuffle(listOfSoftwareActivityName);
 			Collections.shuffle(listOfSoftwareActivityLvl);
 
 			this.listOfSoftwareActivity.add(new SoftwareActivity(listOfSoftwareActivityName.get(0), listOfSoftwareActivityLvl.get(0)));
 		}
+		
 	}
 
 	private int generateNumberRange(int min, int max) {
 		Random random = new Random();
 		return random.nextInt((max - min) + 1) + min;
 	}
-
+	
 }

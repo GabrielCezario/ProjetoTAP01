@@ -6,18 +6,16 @@ public class Developer {
 	
 	private String name;
 	private String devCategory;
-	private int activityExecutionTime;
 	private DeveloperTime developmentExperience;
 	
 	//5000 Is the time (in milliseconds) that developer make your software activity
 	
 	public Developer() {
-		this.activityExecutionTime = 5000;
+		
 	}
 	
 	public Developer(String name, DeveloperTime developmentExperience) {		
 		this.name = name;
-		this.activityExecutionTime = 5000;
 		this.developmentExperience = developmentExperience;
 		setDevCategory();
 	}
@@ -28,10 +26,6 @@ public class Developer {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getActivityExecutionTime() {
-		return this.activityExecutionTime;
 	}
 
 	public DeveloperTime getDevelopmentExperience() {

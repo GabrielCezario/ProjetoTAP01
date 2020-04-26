@@ -18,39 +18,35 @@ public class SystemController {
 	public static int totalAnalyzingBackLogs = 0;
 	
 	public static int totalActivityDone = 0;
+	public static int numberOfActivityToDo = 0;
 	
 	public static void getNumberOfThreadsFromComputer() {
-		SystemController.numberOfThreads = Runtime.getRuntime().availableProcessors();
+		//SystemController.numberOfThreads = Runtime.getRuntime().availableProcessors();
 	}
 	
 	public static void accounting(String initialLetters) {
 		
-		switch (initialLetters) {
-		case "AR":
-			totalAnalyzingRequirements += 1;
-			totalActivityDone += 1;
-			break;
-			
-		case "D":
-			totalDeveloping += 1;
-			totalActivityDone += 1;
-			break;
-			
-		case "CT":
-			totalCreatingTests += 1;
-			totalActivityDone += 1;
-			break;
-	
-		case "FB":
-			totalFixingBugs += 1;
-			totalActivityDone += 1;
-			break;
-	
-		case "AB":
-			totalAnalyzingBackLogs += 1;
-			totalActivityDone += 1;
-			break;
+		if (initialLetters.equalsIgnoreCase("AR")) {
+			++totalAnalyzingRequirements;
 		}
+		
+		if (initialLetters.equalsIgnoreCase("D")) {
+			++totalDeveloping;
+		}
+		
+		if (initialLetters.equalsIgnoreCase("CT")) {
+			++totalCreatingTests;
+		}
+		
+		if (initialLetters.equalsIgnoreCase("FB")) {
+			++totalFixingBugs;
+		}
+		
+		if (initialLetters.equalsIgnoreCase("AB")) {
+			++totalAnalyzingBackLogs;
+		}
+		
+		++totalActivityDone;
 		
 	}
 

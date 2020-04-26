@@ -1,5 +1,7 @@
 package Model;
 
+import javax.swing.JLabel;
+
 import Util.Enum.ActivityTime;
 
 public class SoftwareActivity {

@@ -2,14 +2,12 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 import Model.Developer;
-import Model.SoftwareActivity;
 import Util.Enum.DeveloperTime;
 
-public class DesenvolvedorController implements Runnable{
+public class DesenvolvedorController {
 	
 	private List<Developer> listOfDevelopers = new ArrayList<Developer>();
 	private List<String> listDevNames = new ArrayList<String>();
@@ -17,7 +15,7 @@ public class DesenvolvedorController implements Runnable{
 	
 	private static AtividadeController atividadeController;
 	
-	private int getIndexInit = 0;
+	//private int getIndexInit = 0;
 
 	//Constructor initializing developer list
 	public DesenvolvedorController() {
@@ -27,22 +25,18 @@ public class DesenvolvedorController implements Runnable{
 	//Public methods
 	//------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	public void run() {
-		while(true) {
-			//startProgramming();			
-		}
-	}
-	
-	public String getInitDevelopersName() {
+	/*public String getInitDevelopersName() {
 		verifyIndex();
 		return this.listOfDevelopers.get(getIndexInit++).getName();
-		
 	}
 	
 	public String getInitDevelopersExp() {
 		verifyIndex();
 		return this.listOfDevelopers.get(getIndexInit++).getDevCategory();
-		
+	}*/
+	
+	public List<Developer> getListDevelopers(){
+		return this.listOfDevelopers;
 	}
 	
 	//Private Methods
@@ -66,9 +60,11 @@ public class DesenvolvedorController implements Runnable{
 	}
 	
 	private void generateDevsList() {
-
+		
 		generateDevNames();
 		generateDevExperience();
+
+		Collections.shuffle(listDevNames);
 
 		for (int i = 0; i < 8; i++) {
 			Collections.shuffle(listDevExperience);
@@ -76,58 +72,10 @@ public class DesenvolvedorController implements Runnable{
 		}
 	}
 
-	private void verifyIndex() {
+	/*private void verifyIndex() {
 		if (getIndexInit == listOfDevelopers.size()) {
 			this.getIndexInit = 0;
 		}
-	}
-	
-	private synchronized void startProgramming() {
-		LinkedList<SoftwareActivity> listOfSoftwareActivity = atividadeController.getSoftActivityList();
-		LinkedList<SoftwareActivity> listOfSoftwareActivityDoing = null;
-		LinkedList<SoftwareActivity> listOfSoftwareActivityDone = null;
-		
-		SoftwareActivity softwareActivity = null;
-				
-		if(atividadeController.getSoftActivityList().size() != 0) {
-			
-			softwareActivity = listOfSoftwareActivity.pop();
-			int timeActivity = softwareActivity.getSoftwareActivityExperience().getProp();
-			
-			AtividadeController.setListOfSoftwareActivity(listOfSoftwareActivity);
-			
-			try {
-				listOfSoftwareActivityDoing = atividadeController.getSoftActivityListDoing();
-				
-				if(listOfSoftwareActivityDoing == null) {
-					listOfSoftwareActivityDoing = new LinkedList<SoftwareActivity>();
-					listOfSoftwareActivityDoing.add(softwareActivity);
-				} else {
-					listOfSoftwareActivityDoing.add(softwareActivity);
-				}
-				
-				AtividadeController.setListOfSoftwareActivityDoing(listOfSoftwareActivityDoing);
-				Thread.sleep(timeActivity);
-				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			listOfSoftwareActivityDoing.remove(softwareActivity);
-			listOfSoftwareActivityDone = atividadeController.getSoftActivityListDone();
-			
-			if(listOfSoftwareActivityDone == null) {
-				listOfSoftwareActivityDone = new LinkedList<SoftwareActivity>();
-				listOfSoftwareActivityDone.add(softwareActivity);
-			} else {
-				listOfSoftwareActivityDone.add(softwareActivity);
-			}
-			
-			SystemController.accounting(softwareActivity.getInitialLetters());
-			AtividadeController.setListOfSoftwareActivityDone(listOfSoftwareActivityDone);
-		}
-		
-		
-	}
+	}*/
 
 }
