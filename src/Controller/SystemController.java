@@ -7,9 +7,12 @@ public class SystemController {
 	public static boolean pause = false;
 	public static int numberOfThreads;
 	
-	public static int seconds;
-	public static int minutes;
-	public static int hours;
+	public static int seconds = 0;
+	public static int minutes = 0;
+	public static int hours = 0;
+	public static int timerSpeed = 1000;
+	
+	public static int count = 0;
 	
 	public static int totalAnalyzingRequirements = 0;
 	public static int totalDeveloping = 0;

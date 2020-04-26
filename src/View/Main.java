@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 import Controller.AtividadeController;
 import Controller.DesenvolvedorController;
@@ -82,6 +83,10 @@ public class Main {
 	private static Label lblFbCont;
 	private static Label lblAbCont;
 	private static Label lblNaCont;
+	
+	private static JLabel lblTimer; 
+	
+	public static Timer timer;
 	
 	/**
 	 * Launch the application.
@@ -745,12 +750,12 @@ public class Main {
 
 		Label label = new Label("AR:");
 		label.setFont(new Font("Arial Black", Font.BOLD, 14));
-		label.setBounds(10, 165, 124, 22);
+		label.setBounds(5, 221, 124, 22);
 		PanelRelatorio.add(label);
 
 		lblArCont = new Label(String.valueOf(SystemController.totalAnalyzingRequirements));
 		lblArCont.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblArCont.setBounds(135, 165, 60, 22);
+		lblArCont.setBounds(130, 221, 60, 22);
 		PanelRelatorio.add(lblArCont);
 
 		JButton btnStart_1 = new JButton("Start");
@@ -765,6 +770,8 @@ public class Main {
 				DeveloperThread developerThread5 = new DeveloperThread(dc.getListDevelopers().get(5), progressDev5);
 				DeveloperThread developerThread6 = new DeveloperThread(dc.getListDevelopers().get(6), progressDev6);
 				DeveloperThread developerThread7 = new DeveloperThread(dc.getListDevelopers().get(7), progressDev7);
+				
+				startCounting();
 
 				developerThread0.start();
 				developerThread1.start();
@@ -774,7 +781,6 @@ public class Main {
 				developerThread5.start();
 				developerThread6.start();
 				developerThread7.start();
-
 			}
 		});
 
@@ -785,6 +791,14 @@ public class Main {
 		PanelRelatorio.add(btnStart_1);
 
 		JButton btnStop_1 = new JButton("Stop");
+		btnStop_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				timer.stop();
+				SystemController.pause = true;
+				
+			}
+		});
 		btnStop_1.setForeground(Color.WHITE);
 		btnStop_1.setFont(new Font("Arial", Font.BOLD, 14));
 		btnStop_1.setBackground(new Color(128, 0, 128));
@@ -793,52 +807,52 @@ public class Main {
 
 		Label label_1 = new Label("D:");
 		label_1.setFont(new Font("Arial Black", Font.BOLD, 14));
-		label_1.setBounds(10, 193, 124, 22);
+		label_1.setBounds(5, 249, 124, 22);
 		PanelRelatorio.add(label_1);
 
 		lblDCont = new Label(String.valueOf(SystemController.totalDeveloping));
 		lblDCont.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblDCont.setBounds(135, 193, 60, 22);
+		lblDCont.setBounds(130, 249, 60, 22);
 		PanelRelatorio.add(lblDCont);
 
 		Label label_2 = new Label("CT:");
 		label_2.setFont(new Font("Arial Black", Font.BOLD, 14));
-		label_2.setBounds(10, 221, 124, 22);
+		label_2.setBounds(5, 277, 124, 22);
 		PanelRelatorio.add(label_2);
 
 		lblCtCont = new Label(String.valueOf(SystemController.totalCreatingTests));
 		lblCtCont.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblCtCont.setBounds(135, 221, 60, 22);
+		lblCtCont.setBounds(130, 277, 60, 22);
 		PanelRelatorio.add(lblCtCont);
 
 		Label label_3 = new Label("FB:");
 		label_3.setFont(new Font("Arial Black", Font.BOLD, 14));
-		label_3.setBounds(10, 249, 124, 22);
+		label_3.setBounds(5, 305, 124, 22);
 		PanelRelatorio.add(label_3);
 
 		lblFbCont = new Label(String.valueOf(SystemController.totalFixingBugs));
 		lblFbCont.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblFbCont.setBounds(135, 249, 60, 22);
+		lblFbCont.setBounds(130, 305, 60, 22);
 		PanelRelatorio.add(lblFbCont);
 
 		Label label_4 = new Label("AB:");
 		label_4.setFont(new Font("Arial Black", Font.BOLD, 14));
-		label_4.setBounds(10, 277, 124, 22);
+		label_4.setBounds(5, 333, 124, 22);
 		PanelRelatorio.add(label_4);
 
 		lblAbCont = new Label(String.valueOf(SystemController.totalAnalyzingBackLogs));
 		lblAbCont.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblAbCont.setBounds(135, 277, 60, 22);
+		lblAbCont.setBounds(130, 333, 60, 22);
 		PanelRelatorio.add(lblAbCont);
 
 		Label label_6 = new Label("Number Activity: ");
 		label_6.setFont(new Font("Arial Black", Font.BOLD, 14));
-		label_6.setBounds(10, 305, 124, 22);
+		label_6.setBounds(5, 361, 124, 22);
 		PanelRelatorio.add(label_6);
 
 		lblNaCont = new Label(String.valueOf(SystemController.totalActivityDone));
 		lblNaCont.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblNaCont.setBounds(135, 305, 29, 22);
+		lblNaCont.setBounds(130, 361, 29, 22);
 		PanelRelatorio.add(lblNaCont);
 
 		Label label_8 = new Label("AB - Analyzing Backlog");
@@ -868,13 +882,20 @@ public class Main {
 		
 		Label lblNaCont_1 = new Label(String.valueOf(SystemController.numberOfActivityToDo));
 		lblNaCont_1.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblNaCont_1.setBounds(183, 305, 37, 22);
+		lblNaCont_1.setBounds(178, 361, 37, 22);
 		PanelRelatorio.add(lblNaCont_1);
 		
 		Label lblNaCont_2 = new Label("/");
 		lblNaCont_2.setFont(new Font("Arial Black", Font.BOLD, 14));
-		lblNaCont_2.setBounds(170, 305, 15, 22);
+		lblNaCont_2.setBounds(165, 361, 15, 22);
 		PanelRelatorio.add(lblNaCont_2);
+		
+		lblTimer = new JLabel("00:00:00");
+		lblTimer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTimer.setForeground(Color.WHITE);
+		lblTimer.setFont(new Font("Arial Black", Font.BOLD, 18));
+		lblTimer.setBounds(10, 148, 205, 35);
+		PanelRelatorio.add(lblTimer);
 	}
 	
 	public static void updateCounters() {
@@ -1381,4 +1402,32 @@ public class Main {
 		}
 		
 	}
+	
+	private void startCounting() {
+        ActionListener action = new ActionListener() {  
+            public void actionPerformed(ActionEvent e) {  
+            	SystemController.seconds++;
+            	SystemController.count++;
+                
+                if(SystemController.seconds==60){
+                	SystemController.minutes++;
+                	SystemController.seconds = 0;
+                }
+                
+                if(SystemController.minutes==60){
+                	SystemController.hours++;
+                	SystemController.minutes = 0;
+                }
+                
+                String hr = SystemController.hours <= 9? "0"+SystemController.hours:SystemController.hours+"";
+                String min = SystemController.minutes <= 9? "0"+SystemController.minutes:SystemController.minutes+"";
+                String seg = SystemController.seconds <= 9? "0"+SystemController.seconds:SystemController.seconds+"";
+                
+                lblTimer.setText(hr+":"+min+":"+seg);  
+            }  
+        };  
+        
+        this.timer = new Timer(SystemController.timerSpeed, action);  
+        this.timer.start();
+    }
 }

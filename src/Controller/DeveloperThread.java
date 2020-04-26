@@ -19,7 +19,7 @@ public class DeveloperThread extends Thread {
 	}
 
 	public void run () {
-		while (AtividadeController.getSoftActivityList().size() > 0) {
+		while (AtividadeController.getSoftActivityList().size() > 0 && SystemController.count <= 120) {
 	
 			SoftwareActivity softwareActivity = AtividadeController.atenderProximo();
 			Main.updateLabelsToDo();
@@ -38,21 +38,21 @@ public class DeveloperThread extends Thread {
 				} else {
 					listOfSoftwareActivityDoing.add(softwareActivity);
 				}
-				
-				AtividadeController.setListOfSoftwareActivityDoing(listOfSoftwareActivityDoing);
-				
-				Main.updateLabelsDoing();
+	            
+	            AtividadeController.setListOfSoftwareActivityDoing(listOfSoftwareActivityDoing);
 	            
 	            try {
 	            	
-		            for(int x = 1; x <= time; x++){
+					Main.updateLabelsDoing();
+	            	
+		            for(int i = 1; i <= time; i++){
 		                synchronized(this){
 		                    while(SystemController.pause){
 		                        wait();
 		                    }
 		                } 
 		
-		                progress.setValue(x);
+		                progress.setValue(i);
 		                Thread.sleep(1);
 		            }           
 	            
@@ -79,6 +79,8 @@ public class DeveloperThread extends Thread {
 			}
 			
 		}
+		
+		Main.timer.stop();
 		
 	}
 }
