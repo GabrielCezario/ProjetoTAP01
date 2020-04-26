@@ -111,7 +111,7 @@ public class Main {
 		SystemController.getNumberOfThreadsFromComputer();
 		initComponents();
 	}
-
+	
 	private void initComponents() {
 		dc = new DesenvolvedorController();
 		ac = new AtividadeController();
