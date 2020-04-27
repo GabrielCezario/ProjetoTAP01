@@ -760,27 +760,36 @@ public class Main {
 
 		JButton btnStart_1 = new JButton("Start");
 		btnStart_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				DeveloperThread developerThread0 = new DeveloperThread(dc.getListDevelopers().get(0), progressDev0);
-				DeveloperThread developerThread1 = new DeveloperThread(dc.getListDevelopers().get(1), progressDev1);
-				DeveloperThread developerThread2 = new DeveloperThread(dc.getListDevelopers().get(2), progressDev2);
-				DeveloperThread developerThread3 = new DeveloperThread(dc.getListDevelopers().get(3), progressDev3);
-				DeveloperThread developerThread4 = new DeveloperThread(dc.getListDevelopers().get(4), progressDev4);
-				DeveloperThread developerThread5 = new DeveloperThread(dc.getListDevelopers().get(5), progressDev5);
-				DeveloperThread developerThread6 = new DeveloperThread(dc.getListDevelopers().get(6), progressDev6);
-				DeveloperThread developerThread7 = new DeveloperThread(dc.getListDevelopers().get(7), progressDev7);
+			public void actionPerformed(ActionEvent e) {				
 				
-				startCounting();
+				if(SystemController.pause == false) {
+					
+					DeveloperThread developerThread0 = new DeveloperThread(dc.getListDevelopers().get(0), progressDev0);
+					DeveloperThread developerThread1 = new DeveloperThread(dc.getListDevelopers().get(1), progressDev1);
+					DeveloperThread developerThread2 = new DeveloperThread(dc.getListDevelopers().get(2), progressDev2);
+					DeveloperThread developerThread3 = new DeveloperThread(dc.getListDevelopers().get(3), progressDev3);
+					DeveloperThread developerThread4 = new DeveloperThread(dc.getListDevelopers().get(4), progressDev4);
+					DeveloperThread developerThread5 = new DeveloperThread(dc.getListDevelopers().get(5), progressDev5);
+					DeveloperThread developerThread6 = new DeveloperThread(dc.getListDevelopers().get(6), progressDev6);
+					DeveloperThread developerThread7 = new DeveloperThread(dc.getListDevelopers().get(7), progressDev7);
+					
+					startCounting();
 
-				developerThread0.start();
-				developerThread1.start();
-				developerThread2.start();
-				developerThread3.start();
-				developerThread4.start();
-				developerThread5.start();
-				developerThread6.start();
-				developerThread7.start();
+					developerThread0.start();
+					developerThread1.start();
+					developerThread2.start();
+					developerThread3.start();
+					developerThread4.start();
+					developerThread5.start();
+					developerThread6.start();
+					developerThread7.start();
+					
+				} else {
+					
+					SystemController.pause = false;
+					
+				}
+				
 			}
 		});
 

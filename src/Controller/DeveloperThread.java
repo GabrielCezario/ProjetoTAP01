@@ -24,6 +24,8 @@ public class DeveloperThread extends Thread {
 			SoftwareActivity softwareActivity = AtividadeController.atenderProximo();
 			Main.updateLabelsToDo();
 			
+			
+			
 			if(softwareActivity != null) {
 				int time = programador.getDevelopmentExperience().getProp() + softwareActivity.getSoftwareActivityExperience().getProp();
 	            progress.setMinimum(0);
@@ -40,16 +42,17 @@ public class DeveloperThread extends Thread {
 				}
 	            
 	            AtividadeController.setListOfSoftwareActivityDoing(listOfSoftwareActivityDoing);
+	            Main.updateLabelsDoing();
 	            
 	            try {
-	            	
-					Main.updateLabelsDoing();
 	            	
 		            for(int i = 1; i <= time; i++){
 		                synchronized(this){
 		                    while(SystemController.pause){
-		                        wait();
+		                    	wait();
 		                    }
+		                    
+		                    notify();
 		                } 
 		
 		                progress.setValue(i);
@@ -83,4 +86,5 @@ public class DeveloperThread extends Thread {
 		Main.timer.stop();
 		
 	}
+	
 }
